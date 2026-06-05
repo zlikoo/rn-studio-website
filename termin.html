@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Termin vereinbaren — R&amp;N Studio</title>
+  <meta name="description" content="Vereinbare ein kostenloses Erstgespräch mit R&N Studio.">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,300;9..144,0,400;9..144,0,600;9..144,0,700;9..144,1,300;9..144,1,400&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Calendly widget script -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink:    '#0A0908',
+            cream:  '#F0E8DC',
+            lime:   '#C9F03C',
+            muted:  '#5C5651',
+            border: '#1E1C1A',
+            mid:    '#8C8680',
+          },
+          fontFamily: {
+            display: ['Fraunces', 'Georgia', 'serif'],
+            sans:    ['Syne', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: #0A0908;
+      color: #F0E8DC;
+      font-family: 'Syne', system-ui, sans-serif;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.032;
+      pointer-events: none;
+      z-index: 9998;
+    }
+
+    .nav-pill {
+      background: rgba(10,9,8,0.82);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border: 1px solid #1E1C1A;
+    }
+
+    /* Person cards */
+    .person-card {
+      border: 1px solid #1E1C1A;
+      border-radius: 16px;
+      padding: 2rem;
+      cursor: pointer;
+      transition: border-color .25s ease, background .25s ease, transform .25s ease;
+      background: transparent;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1rem;
+      position: relative;
+    }
+    .person-card:hover {
+      border-color: #3A3834;
+      transform: translateY(-2px);
+    }
+    .person-card.selected {
+      border-color: #C9F03C;
+      background: rgba(201, 240, 60, 0.04);
+    }
+    .person-card.selected .check-badge {
+      opacity: 1;
+    }
+    .check-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 24px;
+      height: 24px;
+      background: #C9F03C;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity .25s ease;
+    }
+
+    /* Avatar */
+    .avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid #1E1C1A;
+      transition: border-color .25s ease;
+      flex-shrink: 0;
+    }
+    .person-card.selected .avatar { border-color: #C9F03C; }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+
+    /* Calendly container */
+    #calendar-wrap {
+      display: none;
+      animation: fadeUp .5s ease forwards;
+    }
+    #calendar-wrap.visible { display: block; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Style Calendly widget to match dark theme */
+    .calendly-inline-widget {
+      border-radius: 16px;
+      overflow: hidden;
+      min-height: 700px;
+    }
+
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid #C9F03C;
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ NAVBAR ══ -->
+  <nav aria-label="Hauptnavigation" style="position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:50;width:calc(100% - 32px);max-width:900px;">
+    <div class="nav-pill rounded-full px-5 py-3 flex items-center justify-between gap-4">
+      <a href="/" style="font-family:'Fraunces',Georgia,serif;color:#F0E8DC;font-weight:600;font-size:1.25rem;letter-spacing:-.01em;text-decoration:none;flex-shrink:0;">
+        R<span style="color:#C9F03C">&amp;</span>N
+      </a>
+      <a href="/" style="color:#8C8680;font-size:.875rem;text-decoration:none;transition:color .2s ease;" onmouseover="this.style.color='#F0E8DC'" onmouseout="this.style.color='#8C8680'">
+        ← Zurück zur Website
+      </a>
+      <a href="/termin.html" style="background:#C9F03C;color:#0A0908;border-radius:9999px;padding:.5rem 1.25rem;font-size:.875rem;font-weight:600;white-space:nowrap;text-decoration:none;">
+        Termin buchen
+      </a>
+    </div>
+  </nav>
+
+
+  <!-- ══ MAIN ══ -->
+  <main style="max-width:860px;margin:0 auto;padding:9rem 1.5rem 6rem;">
+
+    <!-- Header -->
+    <div style="margin-bottom:4rem;">
+      <p style="color:#5C5651;font-size:.75rem;text-transform:uppercase;letter-spacing:.18em;margin-bottom:1rem;">Kostenloses Erstgespräch</p>
+      <h1 style="font-family:'Fraunces',Georgia,serif;font-size:clamp(2.8rem,7vw,5rem);font-weight:600;line-height:.95;color:#F0E8DC;margin-bottom:1.25rem;">
+        Lass uns<br><em style="font-weight:300;">sprechen.</em>
+      </h1>
+      <p style="color:#8C8680;font-size:1rem;max-width:480px;line-height:1.7;">
+        Wähle deinen Gesprächspartner und such dir direkt einen passenden Termin aus — unverbindlich und kostenlos.
+      </p>
+    </div>
+
+    <!-- Step 1: Choose person -->
+    <div style="margin-bottom:3rem;">
+      <p style="color:#5C5651;font-size:.7rem;text-transform:uppercase;letter-spacing:.2em;margin-bottom:1.25rem;">
+        <span style="color:#C9F03C;">01</span> &nbsp;Mit wem möchtest du sprechen?
+      </p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:1rem;">
+
+        <!-- Nick -->
+        <button class="person-card" id="card-nick" onclick="selectPerson('nick')" aria-label="Nick Barthel auswählen">
+          <div class="check-badge" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M2 6l3 3 5-5" stroke="#0A0908" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="avatar">
+            <img src="images/Nick.png" onerror="this.src='https://picsum.photos/seed/nick-av/200/200'" alt="Nick Barthel">
+          </div>
+          <div>
+            <p style="font-weight:700;font-size:.95rem;color:#F0E8DC;letter-spacing:.02em;">Nick Barthel</p>
+            <p style="color:#5C5651;font-size:.75rem;margin-top:.2rem;">Strategie &amp; Content</p>
+          </div>
+          <p style="color:#8C8680;font-size:.8rem;line-height:1.5;">
+            Ideal für Fragen zu Strategie, Content-Planung und Business-Entwicklung.
+          </p>
+        </button>
+
+        <!-- Rina -->
+        <button class="person-card" id="card-rina" onclick="selectPerson('rina')" aria-label="Rina Rückel auswählen">
+          <div class="check-badge" aria-hidden="true">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M2 6l3 3 5-5" stroke="#0A0908" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="avatar">
+            <img src="images/Rina.png" onerror="this.src='https://picsum.photos/seed/rina-av/200/200'" alt="Rina Rückel">
+          </div>
+          <div>
+            <p style="font-weight:700;font-size:.95rem;color:#F0E8DC;letter-spacing:.02em;">Rina Rückel</p>
+            <p style="color:#5C5651;font-size:.75rem;margin-top:.2rem;">Grafikdesign &amp; Branding</p>
+          </div>
+          <p style="color:#8C8680;font-size:.8rem;line-height:1.5;">
+            Ideal für Fragen zu Logo, Corporate Design, Packaging und visuellem Auftritt.
+          </p>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Step 2: Calendar (appears after selection) -->
+    <div id="calendar-wrap">
+      <p style="color:#5C5651;font-size:.7rem;text-transform:uppercase;letter-spacing:.2em;margin-bottom:1.5rem;">
+        <span style="color:#C9F03C;">02</span> &nbsp;Wähle einen Termin
+      </p>
+      <div id="calendly-embed"></div>
+    </div>
+
+  </main>
+
+
+  <!-- ══ FOOTER ══ -->
+  <footer style="padding:2rem 1.5rem;border-top:1px solid #1E1C1A;">
+    <div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;">
+      <span style="font-family:'Fraunces',Georgia,serif;color:#F0E8DC;font-weight:600;font-size:1.2rem;">R<span style="color:#C9F03C;">&amp;</span>N Studio</span>
+      <p style="color:#3A3834;font-size:.8rem;">© 2025 R&amp;N Studio GbR. Alle Rechte vorbehalten.</p>
+      <nav style="display:flex;gap:1.5rem;">
+        <a href="/impressum.html" style="color:#5C5651;font-size:.8rem;text-decoration:none;" onmouseover="this.style.color='#F0E8DC'" onmouseout="this.style.color='#5C5651'">Impressum</a>
+        <a href="#" style="color:#5C5651;font-size:.8rem;text-decoration:none;" onmouseover="this.style.color='#F0E8DC'" onmouseout="this.style.color='#5C5651'">Datenschutz</a>
+      </nav>
+    </div>
+  </footer>
+
+
+  <script>
+    // ── Calendly URLs ──────────────────────────────────────────────
+    // Erstellt kostenlose Accounts auf calendly.com und tragt eure
+    // persönlichen Booking-Links hier ein:
+    const CALENDLY = {
+      nick: 'https://calendly.com/NICK_CALENDLY_LINK',   // ← Nick's Link eintragen
+      rina: 'https://calendly.com/RINA_CALENDLY_LINK',   // ← Rinas Link eintragen
+    };
+    // ──────────────────────────────────────────────────────────────
+
+    let current = null;
+
+    function selectPerson(person) {
+      // Update card styles
+      document.getElementById('card-nick').classList.toggle('selected', person === 'nick');
+      document.getElementById('card-rina').classList.toggle('selected', person === 'rina');
+
+      if (current === person) return;
+      current = person;
+
+      // Show calendar section
+      const wrap = document.getElementById('calendar-wrap');
+      wrap.classList.remove('visible');
+
+      // Rebuild Calendly embed
+      const embed = document.getElementById('calendly-embed');
+      embed.innerHTML = '';
+
+      setTimeout(() => {
+        // Check if real Calendly URL is set
+        const url = CALENDLY[person];
+        if (url.includes('CALENDLY_LINK')) {
+          // Placeholder shown until real links are added
+          embed.innerHTML = `
+            <div style="border:1px solid #1E1C1A;border-radius:16px;padding:3rem;text-align:center;color:#5C5651;">
+              <p style="font-size:.85rem;line-height:1.7;">
+                Calendly-Link für <strong style="color:#F0E8DC;">${person === 'nick' ? 'Nick' : 'Rina'}</strong> noch nicht eingetragen.<br>
+                <span style="color:#C9F03C;">→ calendly.com</span> aufrufen, kostenlosen Account erstellen<br>
+                und den Link in <code style="color:#C9F03C;">termin.html</code> eintragen.
+              </p>
+            </div>`;
+        } else {
+          // Real Calendly embed
+          Calendly.initInlineWidget({
+            url: url + '?hide_gdpr_banner=1&background_color=0A0908&text_color=F0E8DC&primary_color=C9F03C',
+            parentElement: embed,
+          });
+        }
+        wrap.classList.add('visible');
+
+        // Smooth scroll to calendar
+        setTimeout(() => wrap.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+      }, 150);
+    }
+  </script>
+
+</body>
+</html>
