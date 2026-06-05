@@ -102,6 +102,7 @@
     /* ── Service cards ── */
     .service-card {
       transition: background-color 0.25s ease, color 0.25s ease;
+      overflow: hidden;
     }
     .service-card:hover {
       background-color: #C9F03C;
@@ -111,6 +112,11 @@
     .service-card:hover .svc-arrow { color: #0A0908; }
     .service-card:hover .svc-desc  { color: #0A0908; opacity: 0.65; }
     .service-card:hover .svc-title { color: #0A0908; }
+    .svc-img { position: relative; overflow: hidden; height: 220px; }
+    .svc-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; filter: grayscale(0.2); }
+    .service-card:hover .svc-img img { transform: scale(1.05); }
+    .svc-img-overlay { position: absolute; inset: 0; background: #C9F03C; opacity: 0; transition: opacity 0.25s ease; }
+    .service-card:hover .svc-img-overlay { opacity: 1; }
 
     /* ── Portfolio cards ── */
     .portfolio-card { position: relative; overflow: hidden; }
@@ -345,59 +351,83 @@
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,480px),1fr));gap:1px;background:#1E1C1A;">
 
         <!-- 01 Branding -->
-        <div class="service-card reveal" style="background:#0A0908;padding:2.5rem;cursor:pointer;">
-          <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:2rem;">
-            <span class="svc-num font-display" style="font-size:4.5rem;font-weight:300;color:#1E1C1A;line-height:1;transition:color 0.25s ease;">01</span>
-            <svg class="svc-arrow" aria-hidden="true" style="width:24px;height:24px;color:#C9F03C;margin-top:8px;flex-shrink:0;transition:color 0.25s ease;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/>
-            </svg>
+        <div class="service-card reveal" style="background:#0A0908;cursor:pointer;">
+          <div class="svc-img">
+            <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&q=80&fit=crop" alt="Branding & Identität" loading="lazy">
+            <div class="svc-img-overlay"></div>
           </div>
-          <h3 class="svc-title font-display" style="font-size:2rem;font-weight:600;color:#F0E8DC;margin-bottom:0.875rem;transition:color 0.25s ease;">Branding</h3>
-          <p class="svc-desc" style="color:#5C5651;line-height:1.65;font-size:0.95rem;transition:color 0.25s ease, opacity 0.25s ease;">
-            Logo, Farben, Typografie — wir entwickeln eine unverwechselbare Identität, die dein Unternehmen sofort erkennbar macht.
-          </p>
+          <div style="padding:2.5rem;">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:2rem;">
+              <span class="svc-num font-display" style="font-size:4.5rem;font-weight:300;color:#1E1C1A;line-height:1;transition:color 0.25s ease;">01</span>
+              <svg class="svc-arrow" aria-hidden="true" style="width:24px;height:24px;color:#C9F03C;margin-top:8px;flex-shrink:0;transition:color 0.25s ease;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/>
+              </svg>
+            </div>
+            <h3 class="svc-title font-display" style="font-size:2rem;font-weight:600;color:#F0E8DC;margin-bottom:0.875rem;transition:color 0.25s ease;">Branding</h3>
+            <p class="svc-desc" style="color:#5C5651;line-height:1.65;font-size:0.95rem;transition:color 0.25s ease, opacity 0.25s ease;">
+              Logo, Farben, Typografie — wir entwickeln eine unverwechselbare Identität, die dein Unternehmen sofort erkennbar macht.
+            </p>
+          </div>
         </div>
 
         <!-- 02 Social Media -->
-        <div class="service-card reveal" style="background:#0A0908;padding:2.5rem;cursor:pointer;transition-delay:0.07s;">
-          <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:2rem;">
-            <span class="svc-num font-display" style="font-size:4.5rem;font-weight:300;color:#1E1C1A;line-height:1;transition:color 0.25s ease;">02</span>
-            <svg class="svc-arrow" aria-hidden="true" style="width:24px;height:24px;color:#C9F03C;margin-top:8px;flex-shrink:0;transition:color 0.25s ease;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/>
-            </svg>
+        <div class="service-card reveal" style="background:#0A0908;cursor:pointer;transition-delay:0.07s;">
+          <div class="svc-img">
+            <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&q=80&fit=crop" alt="Social Media Content" loading="lazy">
+            <div class="svc-img-overlay"></div>
           </div>
-          <h3 class="svc-title font-display" style="font-size:2rem;font-weight:600;color:#F0E8DC;margin-bottom:0.875rem;transition:color 0.25s ease;">Social Media</h3>
-          <p class="svc-desc" style="color:#5C5651;line-height:1.65;font-size:0.95rem;transition:color 0.25s ease, opacity 0.25s ease;">
-            Content-Erstellung, Vorlagen und Strategien, die deine Zielgruppe auf Instagram, LinkedIn &amp; Co. begeistern.
-          </p>
+          <div style="padding:2.5rem;">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:2rem;">
+              <span class="svc-num font-display" style="font-size:4.5rem;font-weight:300;color:#1E1C1A;line-height:1;transition:color 0.25s ease;">02</span>
+              <svg class="svc-arrow" aria-hidden="true" style="width:24px;height:24px;color:#C9F03C;margin-top:8px;flex-shrink:0;transition:color 0.25s ease;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/>
+              </svg>
+            </div>
+            <h3 class="svc-title font-display" style="font-size:2rem;font-weight:600;color:#F0E8DC;margin-bottom:0.875rem;transition:color 0.25s ease;">Social Media</h3>
+            <p class="svc-desc" style="color:#5C5651;line-height:1.65;font-size:0.95rem;transition:color 0.25s ease, opacity 0.25s ease;">
+              Content-Erstellung, Vorlagen und Strategien, die deine Zielgruppe auf Instagram, LinkedIn &amp; Co. begeistern.
+            </p>
+          </div>
         </div>
 
         <!-- 03 Web-Entwicklung -->
-        <div class="service-card reveal" style="background:#0A0908;padding:2.5rem;cursor:pointer;transition-delay:0.14s;">
-          <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:2rem;">
-            <span class="svc-num font-display" style="font-size:4.5rem;font-weight:300;color:#1E1C1A;line-height:1;transition:color 0.25s ease;">03</span>
-            <svg class="svc-arrow" aria-hidden="true" style="width:24px;height:24px;color:#C9F03C;margin-top:8px;flex-shrink:0;transition:color 0.25s ease;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/>
-            </svg>
+        <div class="service-card reveal" style="background:#0A0908;cursor:pointer;transition-delay:0.14s;">
+          <div class="svc-img">
+            <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80&fit=crop" alt="Web-Entwicklung & Design" loading="lazy">
+            <div class="svc-img-overlay"></div>
           </div>
-          <h3 class="svc-title font-display" style="font-size:2rem;font-weight:600;color:#F0E8DC;margin-bottom:0.875rem;transition:color 0.25s ease;">Web-Entwicklung</h3>
-          <p class="svc-desc" style="color:#5C5651;line-height:1.65;font-size:0.95rem;transition:color 0.25s ease, opacity 0.25s ease;">
-            Schnelle, moderne Websites, die nicht nur gut aussehen, sondern auch performen — für deinen Erfolg online.
-          </p>
+          <div style="padding:2.5rem;">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:2rem;">
+              <span class="svc-num font-display" style="font-size:4.5rem;font-weight:300;color:#1E1C1A;line-height:1;transition:color 0.25s ease;">03</span>
+              <svg class="svc-arrow" aria-hidden="true" style="width:24px;height:24px;color:#C9F03C;margin-top:8px;flex-shrink:0;transition:color 0.25s ease;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/>
+              </svg>
+            </div>
+            <h3 class="svc-title font-display" style="font-size:2rem;font-weight:600;color:#F0E8DC;margin-bottom:0.875rem;transition:color 0.25s ease;">Web-Entwicklung</h3>
+            <p class="svc-desc" style="color:#5C5651;line-height:1.65;font-size:0.95rem;transition:color 0.25s ease, opacity 0.25s ease;">
+              Schnelle, moderne Websites, die nicht nur gut aussehen, sondern auch performen — für deinen Erfolg online.
+            </p>
+          </div>
         </div>
 
         <!-- 04 Beratung -->
-        <div class="service-card reveal" style="background:#0A0908;padding:2.5rem;cursor:pointer;transition-delay:0.21s;">
-          <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:2rem;">
-            <span class="svc-num font-display" style="font-size:4.5rem;font-weight:300;color:#1E1C1A;line-height:1;transition:color 0.25s ease;">04</span>
-            <svg class="svc-arrow" aria-hidden="true" style="width:24px;height:24px;color:#C9F03C;margin-top:8px;flex-shrink:0;transition:color 0.25s ease;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/>
-            </svg>
+        <div class="service-card reveal" style="background:#0A0908;cursor:pointer;transition-delay:0.21s;">
+          <div class="svc-img">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80&fit=crop" alt="Strategieberatung" loading="lazy">
+            <div class="svc-img-overlay"></div>
           </div>
-          <h3 class="svc-title font-display" style="font-size:2rem;font-weight:600;color:#F0E8DC;margin-bottom:0.875rem;transition:color 0.25s ease;">Beratung</h3>
-          <p class="svc-desc" style="color:#5C5651;line-height:1.65;font-size:0.95rem;transition:color 0.25s ease, opacity 0.25s ease;">
-            Strategische Begleitung von der Idee bis zur Umsetzung — damit dein Unternehmen mit klarer Richtung wächst.
-          </p>
+          <div style="padding:2.5rem;">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:2rem;">
+              <span class="svc-num font-display" style="font-size:4.5rem;font-weight:300;color:#1E1C1A;line-height:1;transition:color 0.25s ease;">04</span>
+              <svg class="svc-arrow" aria-hidden="true" style="width:24px;height:24px;color:#C9F03C;margin-top:8px;flex-shrink:0;transition:color 0.25s ease;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/>
+              </svg>
+            </div>
+            <h3 class="svc-title font-display" style="font-size:2rem;font-weight:600;color:#F0E8DC;margin-bottom:0.875rem;transition:color 0.25s ease;">Beratung</h3>
+            <p class="svc-desc" style="color:#5C5651;line-height:1.65;font-size:0.95rem;transition:color 0.25s ease, opacity 0.25s ease;">
+              Strategische Begleitung von der Idee bis zur Umsetzung — damit dein Unternehmen mit klarer Richtung wächst.
+            </p>
+          </div>
         </div>
 
       </div>
@@ -474,7 +504,7 @@
         <!-- CAUCAU -->
         <div class="portfolio-card reveal" style="cursor:pointer;transition-delay:0.07s;">
           <div class="placeholder-bg">
-            <img src="https://images.unsplash.com/photo-1511381939415-e44a853fd54c?w=720&q=80&fit=crop" alt="CAUCAU – Webdesign und Packaging Bio-Schokolade" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1481391319555-be0c3faca541?w=720&q=80&fit=crop" alt="CAUCAU – Webdesign und Packaging Bio-Schokolade" loading="lazy">
           </div>
           <div class="overlay" role="img" aria-label="Projekt: CAUCAU – Webdesign und Verpackungsdesign Bio-Schokolade">
             <span class="font-display" style="font-size:1.4rem;font-weight:600;color:#0A0908;">CAUCAU</span>
@@ -619,7 +649,9 @@
   ══════════════════════════════════════════════ -->
   <section style="padding:6rem 1.5rem;border-top:1px solid #1E1C1A;text-align:center;position:relative;overflow:hidden;">
     <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;">
-      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(201,240,60,0.06) 0%,transparent 65%);border-radius:50%;"></div>
+      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80&fit=crop" alt="" style="width:100%;height:100%;object-fit:cover;display:block;opacity:0.12;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to bottom,#0A0908 0%,rgba(10,9,8,0.6) 50%,#0A0908 100%);"></div>
+      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(201,240,60,0.07) 0%,transparent 65%);border-radius:50%;"></div>
     </div>
     <div style="max-width:800px;margin:0 auto;position:relative;">
       <h2 class="font-display reveal" style="font-size:clamp(3rem,8vw,6.5rem);color:#F0E8DC;font-weight:600;line-height:0.9;margin-bottom:2rem;">
