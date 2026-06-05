@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>R&amp;N Studio — Branding &amp; Design für kleine Unternehmen</title>
+  <meta name="description" content="R&N Studio — Wir kreieren Identitäten, Inhalte und Erlebnisse für kleine Unternehmen. Branding, Social Media, Web-Entwicklung &amp; Beratung.">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,300;9..144,0,400;9..144,0,600;9..144,0,700;9..144,1,300;9..144,1,400;9..144,1,600&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink:    '#0A0908',
+            cream:  '#F0E8DC',
+            lime:   '#C9F03C',
+            muted:  '#5C5651',
+            border: '#1E1C1A',
+            subtle: '#3A3834',
+          },
+          fontFamily: {
+            display: ['Fraunces', 'Georgia', 'serif'],
+            sans:    ['Syne', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: #0A0908;
+      color: #F0E8DC;
+      font-family: 'Syne', system-ui, sans-serif;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    /* Grain texture overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.032;
+      pointer-events: none;
+      z-index: 9998;
+    }
+
+    /* ── Typography ── */
+    .font-display { font-family: 'Fraunces', Georgia, serif; }
+
+    .hero-title {
+      font-size: clamp(3.8rem, 11.5vw, 10.5rem);
+      line-height: 0.88;
+      letter-spacing: -0.025em;
+    }
+
+    /* ── Marquee ── */
+    .marquee-wrap { overflow: hidden; }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 22s linear infinite;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── Scroll reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Service cards ── */
+    .service-card {
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+    .service-card:hover {
+      background-color: #C9F03C;
+      color: #0A0908;
+    }
+    .service-card:hover .svc-num,
+    .service-card:hover .svc-arrow { color: #0A0908; }
+    .service-card:hover .svc-desc  { color: #0A0908; opacity: 0.65; }
+    .service-card:hover .svc-title { color: #0A0908; }
+
+    /* ── Portfolio cards ── */
+    .portfolio-card { position: relative; overflow: hidden; }
+    .portfolio-card .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(201,240,60,0.92);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .portfolio-card:hover .overlay { opacity: 1; }
+    .portfolio-card .placeholder-bg {
+      width: 100%;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── Floating nav ── */
+    .nav-pill {
+      background: rgba(10,9,8,0.82);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border: 1px solid #1E1C1A;
+    }
+
+    /* ── Underline hover links ── */
+    .hover-ul {
+      position: relative;
+      display: inline-block;
+    }
+    .hover-ul::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #C9F03C;
+      transition: width 0.3s ease;
+    }
+    .hover-ul:hover::after { width: 100%; }
+
+    /* ── Form fields ── */
+    .field {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #1E1C1A;
+      color: #F0E8DC;
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      padding: 0.75rem 0;
+      width: 100%;
+      outline: none;
+      transition: border-bottom-color 0.25s ease;
+      cursor: text;
+    }
+    .field:focus        { border-bottom-color: #C9F03C; }
+    .field::placeholder { color: #5C5651; }
+    .field option       { background: #0A0908; color: #F0E8DC; }
+    textarea.field      { resize: none; }
+
+    /* ── Focus ring ── */
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid #C9F03C;
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal                      { opacity: 1; transform: none; transition: none; }
+      .marquee-track               { animation: none; }
+      .service-card,
+      .portfolio-card .overlay,
+      .hover-ul::after, .field     { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════════════ -->
+  <nav aria-label="Hauptnavigation" style="position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:50;width:calc(100% - 32px);max-width:900px;">
+    <div class="nav-pill rounded-full px-5 py-3 flex items-center justify-between gap-4">
+      <!-- Logo -->
+      <a href="#" class="font-display text-cream font-semibold text-xl tracking-tight shrink-0">
+        R<span style="color:#C9F03C">&amp;</span>N
+      </a>
+      <!-- Links -->
+      <div class="hidden md:flex items-center gap-7 text-sm" style="color:#8C8680">
+        <a href="#leistungen" class="hover-ul hover:text-cream transition-colors duration-200">Leistungen</a>
+        <a href="#arbeiten"   class="hover-ul hover:text-cream transition-colors duration-200">Arbeiten</a>
+        <a href="#studio"     class="hover-ul hover:text-cream transition-colors duration-200">Studio</a>
+        <a href="#prozess"    class="hover-ul hover:text-cream transition-colors duration-200">Prozess</a>
+      </div>
+      <!-- CTA -->
+      <a href="#kontakt" style="background:#C9F03C;color:#0A0908;border-radius:9999px;padding:0.5rem 1.25rem;font-size:0.875rem;font-weight:600;white-space:nowrap;transition:opacity 0.2s ease;cursor:pointer;" onmouseover="this.style.opacity='0.82'" onmouseout="this.style.opacity='1'">
+        Kontakt
+      </a>
+    </div>
+  </nav>
+
+
+  <!-- ══════════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════════ -->
+  <section style="position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:7rem 1.5rem 4rem;overflow:hidden;">
+
+    <!-- Background glow -->
+    <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;">
+      <div style="position:absolute;top:-5%;right:-5%;width:min(700px,80vw);height:min(700px,80vw);background:radial-gradient(circle,rgba(201,240,60,0.055) 0%,transparent 65%);border-radius:50%;"></div>
+      <div style="position:absolute;bottom:10%;left:-10%;width:min(500px,60vw);height:min(500px,60vw);background:radial-gradient(circle,rgba(240,232,220,0.025) 0%,transparent 65%);border-radius:50%;"></div>
+    </div>
+
+    <div style="max-width:1280px;margin:0 auto;width:100%;">
+
+      <!-- Eyebrow -->
+      <div class="flex items-center gap-3 reveal" style="margin-bottom:2rem;">
+        <div style="width:8px;height:8px;border-radius:50%;background:#C9F03C;flex-shrink:0;"></div>
+        <span style="color:#8C8680;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.18em;font-weight:500;">Design Studio — Deutschland</span>
+      </div>
+
+      <!-- Main title -->
+      <h1 class="font-display hero-title text-cream reveal" style="transition-delay:0.08s;">
+        R<span style="color:#C9F03C;">&amp;</span>N<br>
+        <em style="font-style:italic;font-weight:300;">Studio</em>
+      </h1>
+
+      <!-- Bottom row -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between reveal" style="margin-top:3rem;gap:1.5rem;transition-delay:0.18s;">
+        <p style="color:#8C8680;font-size:1.1rem;max-width:400px;line-height:1.65;">
+          Wir bauen Marken, die bleiben.<br>
+          Für kleine Unternehmen mit großen Visionen.
+        </p>
+        <div class="flex items-center flex-wrap" style="gap:0.75rem;">
+          <a href="#leistungen" style="border:1px solid #2A2825;color:#F0E8DC;border-radius:9999px;padding:0.75rem 1.5rem;font-size:0.875rem;font-weight:500;transition:border-color 0.2s ease;cursor:pointer;text-decoration:none;" onmouseover="this.style.borderColor='#C9F03C'" onmouseout="this.style.borderColor='#2A2825'">
+            Leistungen
+          </a>
+          <a href="#kontakt" style="background:#F0E8DC;color:#0A0908;border-radius:9999px;padding:0.75rem 1.5rem;font-size:0.875rem;font-weight:600;transition:background-color 0.2s ease;cursor:pointer;text-decoration:none;" onmouseover="this.style.background='#C9F03C'" onmouseout="this.style.background='#F0E8DC'">
+            Projekt starten
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       MARQUEE
+  ══════════════════════════════════════════════ -->
+  <div aria-hidden="true" class="marquee-wrap" style="border-top:1px solid #1E1C1A;border-bottom:1px solid #1E1C1A;padding:1rem 0;">
+    <div class="marquee-track">
+      <!-- First set -->
+      <span style="color:#3A3834;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.2em;padding:0 2.5rem;">Branding</span>
+      <span style="color:#C9F03C;font-size:0.6rem;">✦</span>
+      <span style="color:#3A3834;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.2em;padding:0 2.5rem;">Social Media</span>
+      <span style="color:#C9F03C;font-size:0.6rem;">✦</span>
+      <span style="color:#3A3834;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.2em;padding:0 2.5rem;">Web-Entwicklung</span>
+      <span style="color:#C9F03C;font-size:0.6rem;">✦</span>
+      <span style="color:#3A3834;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.2em;padding:0 2.5rem;">Beratung</span>
+      <span style="color:#C9F03C;font-size:0.6rem;">✦</span>
+      <span style="color:#3A3834;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.2em;padding:0 2.5rem;">Identität</span>
+      <span style="color:#C9F03C;font-size:0.6rem;">✦</span>
+      <span style="color:#3A3834;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.2em;padding:0 2.5rem;">Content</span>
+      <span style="color:#C9F03C;font-size:0.6rem;">✦</span>
+      <span style="color:#3A3834;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.2em;padding:0 2.5rem;">Strategie</span>
+      <span style="color:#C9F03C;font-size:0.6rem;">✦</span>
+      <span style="color:#3A3834;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.2em;padding:0 2.5rem;">Design</span>
+      <span style="color:#C9F03C;font-size:0.6rem;">✦</span>
+      <!-- Duplicate for seamless loop -->
+      <span style="color:#3A3834;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.2em;padding:0 2.5rem;">Branding</span>
+      <span style="color:#C9F03C;font-size:0.6rem;">✦</span>
+      <span style="color:#3A3834;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.2em;padding:0 2.5rem;">Social Media</span>
+      <span style="color:#C9F03C;font-size:0.6rem;">✦</span>
+      <span style="color:#3A3834;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.2em;padding:0 2.5rem;">Web-Entwicklung</span>
+      <span style="color:#C9F03C;font-size:0.6rem;">✦</span>
+      <span style="color:#3A3834;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.2em;padding:0 2.5rem;">Beratung</span>
+      <span style="color:#C9F03C;font-size:0.6rem;">✦</span>
+      <span style="color:#3A3834;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.2em;padding:0 2.5rem;">Identität</span>
+      <span style="color:#C9F03C;font-size:0.6rem;">✦</span>
+      <span style="color:#3A3834;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.2em;padding:0 2.5rem;">Content</span>
+      <span style="color:#C9F03C;font-size:0.6rem;">✦</span>
+      <span style="color:#3A3834;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.2em;padding:0 2.5rem;">Strategie</span>
+      <span style="color:#C9F03C;font-size:0.6rem;">✦</span>
+      <span style="color:#3A3834;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.2em;padding:0 2.5rem;">Design</span>
+      <span style="color:#C9F03C;font-size:0.6rem;">✦</span>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════
+       LEISTUNGEN
+  ══════════════════════════════════════════════ -->
+  <section id="leistungen" style="padding:6rem 1.5rem;">
+    <div style="max-width:1280px;margin:0 auto;">
+
+      <div class="flex items-end justify-between reveal" style="margin-bottom:4rem;flex-wrap:wrap;gap:1.5rem;">
+        <div>
+          <p style="color:#5C5651;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.18em;margin-bottom:0.75rem;">Was wir tun</p>
+          <h2 class="font-display" style="font-size:clamp(2.5rem,6vw,4rem);color:#F0E8DC;font-weight:600;line-height:1.05;">
+            Unsere<br><em style="font-weight:300;">Leistungen</em>
+          </h2>
+        </div>
+        <p class="hidden md:block" style="color:#5C5651;font-size:0.9rem;max-width:280px;text-align:right;line-height:1.6;">
+          Jede Leistung ist darauf ausgelegt, dein Unternehmen sichtbarer und wirkungsvoller zu machen.
+        </p>
+      </div>
+
+      <!-- 2×2 grid -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,480px),1fr));gap:1px;background:#1E1C1A;">
+
+        <!-- 01 Branding -->
+        <div class="service-card reveal" style="background:#0A0908;padding:2.5rem;cursor:pointer;">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:2rem;">
+            <span class="svc-num font-display" style="font-size:4.5rem;font-weight:300;color:#1E1C1A;line-height:1;transition:color 0.25s ease;">01</span>
+            <svg class="svc-arrow" aria-hidden="true" style="width:24px;height:24px;color:#C9F03C;margin-top:8px;flex-shrink:0;transition:color 0.25s ease;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/>
+            </svg>
+          </div>
+          <h3 class="svc-title font-display" style="font-size:2rem;font-weight:600;color:#F0E8DC;margin-bottom:0.875rem;transition:color 0.25s ease;">Branding</h3>
+          <p class="svc-desc" style="color:#5C5651;line-height:1.65;font-size:0.95rem;transition:color 0.25s ease, opacity 0.25s ease;">
+            Logo, Farben, Typografie — wir entwickeln eine unverwechselbare Identität, die dein Unternehmen sofort erkennbar macht.
+          </p>
+        </div>
+
+        <!-- 02 Social Media -->
+        <div class="service-card reveal" style="background:#0A0908;padding:2.5rem;cursor:pointer;transition-delay:0.07s;">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:2rem;">
+            <span class="svc-num font-display" style="font-size:4.5rem;font-weight:300;color:#1E1C1A;line-height:1;transition:color 0.25s ease;">02</span>
+            <svg class="svc-arrow" aria-hidden="true" style="width:24px;height:24px;color:#C9F03C;margin-top:8px;flex-shrink:0;transition:color 0.25s ease;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/>
+            </svg>
+          </div>
+          <h3 class="svc-title font-display" style="font-size:2rem;font-weight:600;color:#F0E8DC;margin-bottom:0.875rem;transition:color 0.25s ease;">Social Media</h3>
+          <p class="svc-desc" style="color:#5C5651;line-height:1.65;font-size:0.95rem;transition:color 0.25s ease, opacity 0.25s ease;">
+            Content-Erstellung, Vorlagen und Strategien, die deine Zielgruppe auf Instagram, LinkedIn &amp; Co. begeistern.
+          </p>
+        </div>
+
+        <!-- 03 Web-Entwicklung -->
+        <div class="service-card reveal" style="background:#0A0908;padding:2.5rem;cursor:pointer;transition-delay:0.14s;">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:2rem;">
+            <span class="svc-num font-display" style="font-size:4.5rem;font-weight:300;color:#1E1C1A;line-height:1;transition:color 0.25s ease;">03</span>
+            <svg class="svc-arrow" aria-hidden="true" style="width:24px;height:24px;color:#C9F03C;margin-top:8px;flex-shrink:0;transition:color 0.25s ease;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/>
+            </svg>
+          </div>
+          <h3 class="svc-title font-display" style="font-size:2rem;font-weight:600;color:#F0E8DC;margin-bottom:0.875rem;transition:color 0.25s ease;">Web-Entwicklung</h3>
+          <p class="svc-desc" style="color:#5C5651;line-height:1.65;font-size:0.95rem;transition:color 0.25s ease, opacity 0.25s ease;">
+            Schnelle, moderne Websites, die nicht nur gut aussehen, sondern auch performen — für deinen Erfolg online.
+          </p>
+        </div>
+
+        <!-- 04 Beratung -->
+        <div class="service-card reveal" style="background:#0A0908;padding:2.5rem;cursor:pointer;transition-delay:0.21s;">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:2rem;">
+            <span class="svc-num font-display" style="font-size:4.5rem;font-weight:300;color:#1E1C1A;line-height:1;transition:color 0.25s ease;">04</span>
+            <svg class="svc-arrow" aria-hidden="true" style="width:24px;height:24px;color:#C9F03C;margin-top:8px;flex-shrink:0;transition:color 0.25s ease;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/>
+            </svg>
+          </div>
+          <h3 class="svc-title font-display" style="font-size:2rem;font-weight:600;color:#F0E8DC;margin-bottom:0.875rem;transition:color 0.25s ease;">Beratung</h3>
+          <p class="svc-desc" style="color:#5C5651;line-height:1.65;font-size:0.95rem;transition:color 0.25s ease, opacity 0.25s ease;">
+            Strategische Begleitung von der Idee bis zur Umsetzung — damit dein Unternehmen mit klarer Richtung wächst.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       ARBEITEN / PORTFOLIO
+  ══════════════════════════════════════════════ -->
+  <section id="arbeiten" style="padding:6rem 1.5rem;border-top:1px solid #1E1C1A;">
+    <div style="max-width:1280px;margin:0 auto;">
+
+      <div class="flex items-end justify-between reveal" style="margin-bottom:4rem;flex-wrap:wrap;gap:1.5rem;">
+        <div>
+          <p style="color:#5C5651;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.18em;margin-bottom:0.75rem;">Ausgewählte Projekte</p>
+          <h2 class="font-display" style="font-size:clamp(2.5rem,6vw,4rem);color:#F0E8DC;font-weight:600;line-height:1.05;">
+            Unsere<br><em style="font-weight:300;">Arbeiten</em>
+          </h2>
+        </div>
+        <a href="#kontakt" style="color:#C9F03C;font-size:0.875rem;text-decoration:none;" class="hover-ul">
+          Alle Projekte anfragen →
+        </a>
+      </div>
+
+      <!-- Portfolio grid -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,360px),1fr));gap:1px;background:#1E1C1A;">
+
+        <!-- MANTARIS -->
+        <div class="portfolio-card reveal" style="cursor:pointer;">
+          <div class="placeholder-bg" style="background:linear-gradient(135deg,#0B2E52 0%,#1A5F96 100%);">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.75rem;">
+              <span class="font-display" style="font-size:1.75rem;font-weight:700;color:rgba(255,255,255,0.13);letter-spacing:0.08em;">MANTARIS</span>
+              <span style="color:rgba(255,255,255,0.22);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.22em;">Corporate Design</span>
+            </div>
+          </div>
+          <div class="overlay" role="img" aria-label="Projekt: MANTARIS Corporate Design – Tauchschule">
+            <span class="font-display" style="font-size:1.4rem;font-weight:600;color:#0A0908;">MANTARIS</span>
+            <span style="font-size:0.75rem;color:#0A0908;opacity:0.65;margin-top:0.25rem;text-transform:uppercase;letter-spacing:0.15em;">Corporate Design</span>
+          </div>
+          <div style="padding:1.25rem;background:#0A0908;">
+            <p style="color:#F0E8DC;font-size:0.9rem;font-weight:500;">MANTARIS</p>
+            <p style="color:#5C5651;font-size:0.75rem;margin-top:0.25rem;">Corporate Design · Branding</p>
+          </div>
+        </div>
+
+        <!-- PICK'N'BITE -->
+        <div class="portfolio-card reveal" style="cursor:pointer;transition-delay:0.07s;">
+          <div class="placeholder-bg" style="background:linear-gradient(135deg,#7A3008 0%,#C85A0A 100%);">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.75rem;">
+              <span class="font-display" style="font-size:1.75rem;font-weight:700;color:rgba(255,255,255,0.13);letter-spacing:0.05em;">pick'n'bite</span>
+              <span style="color:rgba(255,255,255,0.22);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.22em;">Corporate Design</span>
+            </div>
+          </div>
+          <div class="overlay" role="img" aria-label="Projekt: Pick'n'Bite Corporate Design – Fast-Food Brand">
+            <span class="font-display" style="font-size:1.4rem;font-weight:600;color:#0A0908;">Pick'n'Bite</span>
+            <span style="font-size:0.75rem;color:#0A0908;opacity:0.65;margin-top:0.25rem;text-transform:uppercase;letter-spacing:0.15em;">Corporate Design</span>
+          </div>
+          <div style="padding:1.25rem;background:#0A0908;">
+            <p style="color:#F0E8DC;font-size:0.9rem;font-weight:500;">Pick'n'Bite</p>
+            <p style="color:#5C5651;font-size:0.75rem;margin-top:0.25rem;">Corporate Design · Branding</p>
+          </div>
+        </div>
+
+        <!-- MERIDIAN HOTEL -->
+        <div class="portfolio-card reveal" style="cursor:pointer;transition-delay:0.14s;">
+          <div class="placeholder-bg" style="background:linear-gradient(135deg,#1A1C20 0%,#2F3036 100%);">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.75rem;">
+              <span class="font-display" style="font-size:1.75rem;font-weight:700;color:rgba(156,91,46,0.35);letter-spacing:0.05em;">MERIDIAN</span>
+              <span style="color:rgba(156,91,46,0.3);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.22em;">Logo · Leitsystem</span>
+            </div>
+          </div>
+          <div class="overlay" role="img" aria-label="Projekt: Meridian Hotel – Logo und Leitsystem">
+            <span class="font-display" style="font-size:1.4rem;font-weight:600;color:#0A0908;">Meridian Hotel</span>
+            <span style="font-size:0.75rem;color:#0A0908;opacity:0.65;margin-top:0.25rem;text-transform:uppercase;letter-spacing:0.15em;">Logo · Leitsystem</span>
+          </div>
+          <div style="padding:1.25rem;background:#0A0908;">
+            <p style="color:#F0E8DC;font-size:0.9rem;font-weight:500;">Meridian Hotel</p>
+            <p style="color:#5C5651;font-size:0.75rem;margin-top:0.25rem;">Logo Design · Leitsystem</p>
+          </div>
+        </div>
+
+        <!-- CAUCAU -->
+        <div class="portfolio-card reveal" style="cursor:pointer;transition-delay:0.07s;">
+          <div class="placeholder-bg" style="background:linear-gradient(135deg,#5C1A3B 0%,#993366 100%);">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.75rem;">
+              <span class="font-display" style="font-size:1.75rem;font-weight:700;color:rgba(255,255,255,0.15);letter-spacing:0.1em;">CAUCAU</span>
+              <span style="color:rgba(255,255,255,0.22);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.22em;">Webdesign · Packaging</span>
+            </div>
+          </div>
+          <div class="overlay" role="img" aria-label="Projekt: CAUCAU – Webdesign und Verpackungsdesign Bio-Schokolade">
+            <span class="font-display" style="font-size:1.4rem;font-weight:600;color:#0A0908;">CAUCAU</span>
+            <span style="font-size:0.75rem;color:#0A0908;opacity:0.65;margin-top:0.25rem;text-transform:uppercase;letter-spacing:0.15em;">Webdesign · Packaging</span>
+          </div>
+          <div style="padding:1.25rem;background:#0A0908;">
+            <p style="color:#F0E8DC;font-size:0.9rem;font-weight:500;">CAUCAU</p>
+            <p style="color:#5C5651;font-size:0.75rem;margin-top:0.25rem;">Webdesign · Packaging · Branding</p>
+          </div>
+        </div>
+
+        <!-- SPILATY -->
+        <div class="portfolio-card reveal" style="cursor:pointer;transition-delay:0.14s;">
+          <div class="placeholder-bg" style="background:linear-gradient(135deg,#372315 0%,#6B4C30 100%);">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.75rem;">
+              <span class="font-display" style="font-size:1.75rem;font-weight:700;color:rgba(247,234,223,0.18);letter-spacing:0.05em;">SPILATY</span>
+              <span style="color:rgba(247,234,223,0.18);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.22em;">Logo Design</span>
+            </div>
+          </div>
+          <div class="overlay" role="img" aria-label="Projekt: SPILATY – Logo Design für GenZ-Nachrichtenmagazin">
+            <span class="font-display" style="font-size:1.4rem;font-weight:600;color:#0A0908;">SPILATY</span>
+            <span style="font-size:0.75rem;color:#0A0908;opacity:0.65;margin-top:0.25rem;text-transform:uppercase;letter-spacing:0.15em;">Logo Design</span>
+          </div>
+          <div style="padding:1.25rem;background:#0A0908;">
+            <p style="color:#F0E8DC;font-size:0.9rem;font-weight:500;">SPILATY</p>
+            <p style="color:#5C5651;font-size:0.75rem;margin-top:0.25rem;">Logo Design · Brand Identity</p>
+          </div>
+        </div>
+
+        <!-- ODYSSEUS -->
+        <div class="portfolio-card reveal" style="cursor:pointer;transition-delay:0.21s;">
+          <div class="placeholder-bg" style="background:linear-gradient(135deg,#12101A 0%,#2A2250 100%);">
+            <div style="display:flex;flex-direction:column;align-items:center;gap:0.75rem;">
+              <span class="font-display" style="font-size:1.75rem;font-weight:700;color:rgba(201,240,60,0.16);letter-spacing:0.05em;">ODYSSEUS</span>
+              <span style="color:rgba(201,240,60,0.18);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.22em;">Plakatdesign</span>
+            </div>
+          </div>
+          <div class="overlay" role="img" aria-label="Projekt: Odysseus – Werbeplakat Gamescom 2025">
+            <span class="font-display" style="font-size:1.4rem;font-weight:600;color:#0A0908;">Odysseus</span>
+            <span style="font-size:0.75rem;color:#0A0908;opacity:0.65;margin-top:0.25rem;text-transform:uppercase;letter-spacing:0.15em;">Plakatdesign</span>
+          </div>
+          <div style="padding:1.25rem;background:#0A0908;">
+            <p style="color:#F0E8DC;font-size:0.9rem;font-weight:500;">Odysseus</p>
+            <p style="color:#5C5651;font-size:0.75rem;margin-top:0.25rem;">Plakatdesign · Print</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       STUDIO / ÜBER UNS
+  ══════════════════════════════════════════════ -->
+  <section id="studio" style="padding:6rem 1.5rem;border-top:1px solid #1E1C1A;">
+    <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:4rem;align-items:center;">
+
+      <!-- Left -->
+      <div>
+        <p class="reveal" style="color:#5C5651;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.18em;margin-bottom:1.5rem;">Das Studio</p>
+        <h2 class="font-display reveal" style="font-size:clamp(2.2rem,5.5vw,3.5rem);color:#F0E8DC;font-weight:600;line-height:1.1;margin-bottom:2rem;transition-delay:0.08s;">
+          Design, das<br>
+          <em style="font-weight:300;color:#C9F03C;">Wirkung</em><br>
+          erzeugt.
+        </h2>
+        <p class="reveal" style="color:#8C8680;line-height:1.7;margin-bottom:1.25rem;font-size:0.975rem;transition-delay:0.16s;">
+          Hinter R&amp;N Studio stehen Rina &amp; Nick — eine geprüfte Grafikdesignerin und ein Entwickler aus dem Rhein-Main-Gebiet. Rina gestaltet visuelle Markenidentitäten mit Photoshop, Illustrator und InDesign, Nick bringt sie digital zum Leben.
+        </p>
+        <p class="reveal" style="color:#8C8680;line-height:1.7;font-size:0.975rem;transition-delay:0.24s;">
+          Gemeinsam begleiten wir kleine Unternehmen von der ersten Idee über Corporate Design bis zur fertigen Website — mit Kreativität, Klarheit und echtem Engagement.
+        </p>
+      </div>
+
+      <!-- Right: Stats -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#1E1C1A;">
+        <div class="reveal" style="background:#0A0908;padding:2rem;">
+          <span class="font-display" style="font-size:3rem;font-weight:700;color:#F0E8DC;">50<span style="color:#C9F03C;">+</span></span>
+          <p style="color:#5C5651;font-size:0.8rem;margin-top:0.5rem;">Projekte umgesetzt</p>
+        </div>
+        <div class="reveal" style="background:#0A0908;padding:2rem;transition-delay:0.07s;">
+          <span class="font-display" style="font-size:3rem;font-weight:700;color:#F0E8DC;">3<span style="color:#C9F03C;">+</span></span>
+          <p style="color:#5C5651;font-size:0.8rem;margin-top:0.5rem;">Jahre Erfahrung</p>
+        </div>
+        <div class="reveal" style="background:#0A0908;padding:2rem;transition-delay:0.14s;">
+          <span class="font-display" style="font-size:3rem;font-weight:700;color:#F0E8DC;">4</span>
+          <p style="color:#5C5651;font-size:0.8rem;margin-top:0.5rem;">Kernleistungen</p>
+        </div>
+        <div class="reveal" style="background:#0A0908;padding:2rem;transition-delay:0.21s;">
+          <span class="font-display" style="font-size:3rem;font-weight:700;color:#F0E8DC;">100<span style="color:#C9F03C;">%</span></span>
+          <p style="color:#5C5651;font-size:0.8rem;margin-top:0.5rem;">Maßgeschneidert</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       PROZESS
+  ══════════════════════════════════════════════ -->
+  <section id="prozess" style="padding:6rem 1.5rem;border-top:1px solid #1E1C1A;">
+    <div style="max-width:1280px;margin:0 auto;">
+
+      <p class="reveal" style="color:#5C5651;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.18em;margin-bottom:0.75rem;">Wie wir arbeiten</p>
+      <h2 class="font-display reveal" style="font-size:clamp(2.5rem,6vw,4rem);color:#F0E8DC;font-weight:600;margin-bottom:4rem;line-height:1.05;transition-delay:0.08s;">
+        Der <em style="font-weight:300;">Prozess</em>
+      </h2>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:1px;background:#1E1C1A;">
+
+        <div class="reveal" style="background:#0A0908;padding:2.5rem;">
+          <span style="color:#C9F03C;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.2em;display:block;margin-bottom:1.5rem;">01</span>
+          <h3 class="font-display" style="font-size:1.5rem;font-weight:600;color:#F0E8DC;margin-bottom:0.75rem;">Discovery</h3>
+          <p style="color:#5C5651;font-size:0.875rem;line-height:1.65;">Wir verstehen dein Unternehmen, deine Ziele und deine Zielgruppe.</p>
+        </div>
+
+        <div class="reveal" style="background:#0A0908;padding:2.5rem;transition-delay:0.08s;">
+          <span style="color:#C9F03C;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.2em;display:block;margin-bottom:1.5rem;">02</span>
+          <h3 class="font-display" style="font-size:1.5rem;font-weight:600;color:#F0E8DC;margin-bottom:0.75rem;">Konzept</h3>
+          <p style="color:#5C5651;font-size:0.875rem;line-height:1.65;">Strategisches Design-Konzept mit klarer Richtung und kreativem Fokus.</p>
+        </div>
+
+        <div class="reveal" style="background:#0A0908;padding:2.5rem;transition-delay:0.16s;">
+          <span style="color:#C9F03C;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.2em;display:block;margin-bottom:1.5rem;">03</span>
+          <h3 class="font-display" style="font-size:1.5rem;font-weight:600;color:#F0E8DC;margin-bottom:0.75rem;">Umsetzung</h3>
+          <p style="color:#5C5651;font-size:0.875rem;line-height:1.65;">Präzise Ausführung mit regelmäßigem Feedback und Anpassung.</p>
+        </div>
+
+        <div class="reveal" style="background:#0A0908;padding:2.5rem;transition-delay:0.24s;">
+          <span style="color:#C9F03C;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.2em;display:block;margin-bottom:1.5rem;">04</span>
+          <h3 class="font-display" style="font-size:1.5rem;font-weight:600;color:#F0E8DC;margin-bottom:0.75rem;">Launch</h3>
+          <p style="color:#5C5651;font-size:0.875rem;line-height:1.65;">Übergabe und Begleitung beim Start — damit alles reibungslos läuft.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       CTA BAND
+  ══════════════════════════════════════════════ -->
+  <section style="padding:6rem 1.5rem;border-top:1px solid #1E1C1A;text-align:center;position:relative;overflow:hidden;">
+    <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;">
+      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(201,240,60,0.06) 0%,transparent 65%);border-radius:50%;"></div>
+    </div>
+    <div style="max-width:800px;margin:0 auto;position:relative;">
+      <h2 class="font-display reveal" style="font-size:clamp(3rem,8vw,6.5rem);color:#F0E8DC;font-weight:600;line-height:0.9;margin-bottom:2rem;">
+        Bereit,<br><em style="font-weight:300;color:#C9F03C;">loszulegen?</em>
+      </h2>
+      <p class="reveal" style="color:#8C8680;font-size:1.1rem;margin-bottom:2.5rem;transition-delay:0.1s;">
+        Lass uns dein Projekt besprechen — unverbindlich und kostenlos.
+      </p>
+      <a href="#kontakt" class="reveal" style="display:inline-block;background:#C9F03C;color:#0A0908;font-weight:600;border-radius:9999px;padding:1rem 2.5rem;font-size:1rem;text-decoration:none;transition:opacity 0.2s ease;cursor:pointer;transition-delay:0.2s;" onmouseover="this.style.opacity='0.82'" onmouseout="this.style.opacity='1'">
+        Jetzt Gespräch anfragen
+      </a>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       KONTAKT
+  ══════════════════════════════════════════════ -->
+  <section id="kontakt" style="padding:6rem 1.5rem;border-top:1px solid #1E1C1A;">
+    <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:5rem;">
+
+      <!-- Left: Info -->
+      <div>
+        <p class="reveal" style="color:#5C5651;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.18em;margin-bottom:1.5rem;">Kontakt</p>
+        <h2 class="font-display reveal" style="font-size:clamp(2.5rem,6vw,4rem);color:#F0E8DC;font-weight:600;line-height:1.05;margin-bottom:2rem;transition-delay:0.08s;">
+          Lass uns<br><em style="font-weight:300;">sprechen.</em>
+        </h2>
+        <p class="reveal" style="color:#8C8680;line-height:1.7;margin-bottom:3rem;font-size:0.975rem;transition-delay:0.16s;">
+          Du hast ein Projekt im Kopf? Schreib uns einfach. Wir melden uns innerhalb von 24 Stunden.
+        </p>
+        <div class="reveal" style="display:flex;flex-direction:column;gap:1.5rem;transition-delay:0.24s;">
+          <div>
+            <p style="color:#5C5651;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.18em;margin-bottom:0.35rem;">E-Mail</p>
+            <a href="mailto:hello@rn-studio.de" class="hover-ul" style="color:#F0E8DC;text-decoration:none;transition:color 0.2s ease;font-size:0.975rem;" onmouseover="this.style.color='#C9F03C'" onmouseout="this.style.color='#F0E8DC'">hello@rn-studio.de</a>
+          </div>
+          <div>
+            <p style="color:#5C5651;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.18em;margin-bottom:0.35rem;">Instagram</p>
+            <a href="#" class="hover-ul" style="color:#F0E8DC;text-decoration:none;transition:color 0.2s ease;font-size:0.975rem;" onmouseover="this.style.color='#C9F03C'" onmouseout="this.style.color='#F0E8DC'">@rn.studio</a>
+          </div>
+          <div>
+            <p style="color:#5C5651;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.18em;margin-bottom:0.35rem;">Standort</p>
+            <p style="color:#F0E8DC;font-size:0.975rem;">Rhein-Main-Gebiet, Deutschland</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Form -->
+      <form class="reveal" style="display:flex;flex-direction:column;gap:2rem;transition-delay:0.16s;" onsubmit="handleSubmit(event)" novalidate>
+        <div>
+          <label for="name" style="color:#5C5651;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.18em;display:block;margin-bottom:0.5rem;">Name *</label>
+          <input id="name" name="name" type="text" class="field" placeholder="Dein Name" required aria-required="true">
+        </div>
+        <div>
+          <label for="email" style="color:#5C5651;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.18em;display:block;margin-bottom:0.5rem;">E-Mail *</label>
+          <input id="email" name="email" type="email" class="field" placeholder="deine@email.de" required aria-required="true">
+        </div>
+        <div>
+          <label for="service" style="color:#5C5651;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.18em;display:block;margin-bottom:0.5rem;">Leistung</label>
+          <select id="service" name="service" class="field" style="cursor:pointer;" onfocus="this.style.borderBottomColor='#C9F03C'" onblur="this.style.borderBottomColor='#1E1C1A'">
+            <option value="">Leistung wählen...</option>
+            <option value="branding">Branding</option>
+            <option value="social">Social Media</option>
+            <option value="web">Web-Entwicklung</option>
+            <option value="consulting">Beratung</option>
+            <option value="all">Alles davon</option>
+          </select>
+        </div>
+        <div>
+          <label for="message" style="color:#5C5651;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.18em;display:block;margin-bottom:0.5rem;">Nachricht</label>
+          <textarea id="message" name="message" rows="4" class="field" placeholder="Erzähl uns von deinem Projekt..."></textarea>
+        </div>
+        <button id="submit-btn" type="submit" style="width:100%;background:#C9F03C;color:#0A0908;font-family:'Syne',sans-serif;font-weight:600;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.15em;padding:1rem;border-radius:9999px;border:none;cursor:pointer;transition:opacity 0.2s ease;" onmouseover="if(!this.disabled)this.style.opacity='0.82'" onmouseout="if(!this.disabled)this.style.opacity='1'">
+          Nachricht senden
+        </button>
+        <p id="form-success" style="color:#C9F03C;font-size:0.875rem;text-align:center;display:none;" role="alert">
+          Danke! Wir melden uns innerhalb von 24 Stunden.
+        </p>
+      </form>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════ -->
+  <footer style="padding:2rem 1.5rem;border-top:1px solid #1E1C1A;">
+    <div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;">
+      <span class="font-display" style="color:#F0E8DC;font-weight:600;font-size:1.2rem;">R<span style="color:#C9F03C;">&amp;</span>N Studio</span>
+      <p style="color:#3A3834;font-size:0.8rem;">© 2025 R&amp;N Studio. Alle Rechte vorbehalten.</p>
+      <nav aria-label="Footer-Navigation" style="display:flex;gap:1.5rem;">
+        <a href="#" class="hover-ul" style="color:#5C5651;font-size:0.8rem;text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='#F0E8DC'" onmouseout="this.style.color='#5C5651'">Impressum</a>
+        <a href="#" class="hover-ul" style="color:#5C5651;font-size:0.8rem;text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='#F0E8DC'" onmouseout="this.style.color='#5C5651'">Datenschutz</a>
+      </nav>
+    </div>
+  </footer>
+
+
+  <!-- ══════════════════════════════════════════════
+       SCRIPTS
+  ══════════════════════════════════════════════ -->
+  <script>
+    // Scroll reveal
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Form submit
+    function handleSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const name = form.querySelector('#name').value.trim();
+      const email = form.querySelector('#email').value.trim();
+      if (!name || !email) {
+        form.querySelector('#name').focus();
+        return;
+      }
+      const btn = document.getElementById('submit-btn');
+      btn.disabled = true;
+      btn.style.opacity = '0.5';
+      btn.style.cursor = 'not-allowed';
+      btn.textContent = 'Wird gesendet...';
+      // Simulated send
+      setTimeout(() => {
+        btn.style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+      }, 800);
+    }
+  </script>
+
+</body>
+</html>
