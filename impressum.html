@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Impressum — R&amp;N Studio</title>
   <meta name="robots" content="noindex, nofollow">
@@ -102,6 +103,53 @@
     .legal-section p, .legal-section address { color: #8C8680; line-height: 1.75; font-size: 0.95rem; font-style: normal; }
     .legal-section a { color: #C9F03C; text-decoration: none; }
     .legal-section a:hover { text-decoration: underline; }
+
+    /* Mobile hamburger menu */
+    .nav-cta-desktop { display: none; }
+    #mobile-menu {
+      position: fixed;
+      inset: 0;
+      z-index: 49;
+      background: #0A0908;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5rem 2.5rem 3rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .35s ease, transform .35s ease;
+      transform: translateY(-8px);
+    }
+    #mobile-menu.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    @media (min-width: 768px) {
+      .nav-cta-desktop { display: inline-flex !important; }
+      #menu-toggle { display: none !important; }
+      #mobile-menu { display: none !important; }
+    }
+    .mob-link {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      color: #F0E8DC;
+      text-decoration: none;
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: clamp(2.4rem, 9.5vw, 3.8rem);
+      font-weight: 600;
+      line-height: 1;
+      padding: .75rem 0;
+      border-bottom: 1px solid #1E1C1A;
+      transition: color .2s ease;
+    }
+    .mob-link .num {
+      font-size: .7rem;
+      color: #C9F03C;
+      font-family: 'Syne', system-ui, sans-serif;
+      font-weight: 700;
+      letter-spacing: .18em;
+      flex-shrink: 0;
+      align-self: center;
+    }
+    .mob-link:hover, .mob-link.active { color: #C9F03C; }
   </style>
 </head>
 <body>
@@ -119,9 +167,25 @@
         <a href="/referenzen.html" style="color:#8C8680;text-decoration:none;transition:color .2s ease;white-space:nowrap;" onmouseover="this.style.color='#F0E8DC'" onmouseout="this.style.color='#8C8680'">Referenzen</a>
         <a href="/#kontakt"    style="color:#8C8680;text-decoration:none;transition:color .2s ease;white-space:nowrap;" onmouseover="this.style.color='#F0E8DC'" onmouseout="this.style.color='#8C8680'">Kontakt</a>
       </div>
-      <a href="/termin.html" class="btn-lime" style="padding:.5rem 1.2rem;font-size:.8rem;">Termin buchen</a>
+      <div style="display:flex;align-items:center;gap:.75rem;">
+        <a href="/termin.html" class="btn-lime nav-cta-desktop" style="padding:.5rem 1.2rem;font-size:.8rem;">Termin buchen</a>
+        <button id="menu-toggle" onclick="toggleMenu()" aria-label="Menü öffnen" style="background:none;border:none;color:#F0E8DC;cursor:pointer;padding:.25rem;display:flex;align-items:center;justify-content:center;">
+          <svg id="icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+          <svg id="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
     </div>
   </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" aria-hidden="true">
+    <a href="/#leistungen"     class="mob-link" onclick="closeMenu()"><span class="num">01</span>Leistungen</a>
+    <a href="/#arbeiten"       class="mob-link" onclick="closeMenu()"><span class="num">02</span>Arbeiten</a>
+    <a href="/team.html"       class="mob-link" onclick="closeMenu()"><span class="num">03</span>Team</a>
+    <a href="/referenzen.html" class="mob-link" onclick="closeMenu()"><span class="num">04</span>Referenzen</a>
+    <a href="/#kontakt"        class="mob-link" onclick="closeMenu()"><span class="num">05</span>Kontakt</a>
+    <div style="margin-top:2.5rem;"><a href="/termin.html" class="btn-lime" style="padding:1rem 2.5rem;font-size:1rem;">Termin buchen</a></div>
+  </div>
 
   <!-- CONTENT -->
   <main style="max-width:720px;margin:0 auto;padding:10rem 1.5rem 6rem;">
@@ -251,6 +315,23 @@
   </footer>
 
   <script>
+    function toggleMenu() {
+      var m = document.getElementById('mobile-menu');
+      var open = m.classList.contains('open');
+      m.classList.toggle('open');
+      document.getElementById('icon-open').style.display = open ? '' : 'none';
+      document.getElementById('icon-close').style.display = open ? 'none' : '';
+      document.body.style.overflow = open ? '' : 'hidden';
+      m.setAttribute('aria-hidden', open ? 'true' : 'false');
+    }
+    function closeMenu() {
+      var m = document.getElementById('mobile-menu');
+      m.classList.remove('open');
+      document.getElementById('icon-open').style.display = '';
+      document.getElementById('icon-close').style.display = 'none';
+      document.body.style.overflow = '';
+      m.setAttribute('aria-hidden', 'true');
+    }
     (function() {
       var pill = document.getElementById('nav-pill');
       function update() {
