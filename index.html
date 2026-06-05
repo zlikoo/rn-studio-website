@@ -151,11 +151,42 @@
 
     /* ── Floating nav ── */
     .nav-pill {
-      background: rgba(10,9,8,0.82);
-      backdrop-filter: blur(22px);
-      -webkit-backdrop-filter: blur(22px);
-      border: 1px solid #1E1C1A;
+      background: rgba(10,9,8,0.10);
+      backdrop-filter: blur(64px) saturate(200%);
+      -webkit-backdrop-filter: blur(64px) saturate(200%);
+      border: 1px solid rgba(255,255,255,0.07);
+      box-shadow:
+        0 8px 40px rgba(0,0,0,0.45),
+        inset 0 1.5px 0 rgba(255,255,255,0.1),
+        inset 0 -1px 0 rgba(0,0,0,0.35);
     }
+    .btn-lime {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(170deg, #E2FF52 0%, #C9F03C 55%, #AFCF27 100%);
+      color: #0A0908 !important;
+      font-weight: 700;
+      border-radius: 9999px;
+      white-space: nowrap;
+      cursor: pointer;
+      border: none;
+      text-decoration: none !important;
+      font-family: 'Syne', system-ui, sans-serif;
+      box-shadow:
+        0 2px 20px rgba(201,240,60,0.4),
+        inset 0 1.5px 0 rgba(255,255,255,0.5),
+        inset 0 -1.5px 0 rgba(0,0,0,0.07);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-lime:hover {
+      box-shadow:
+        0 4px 28px rgba(201,240,60,0.65),
+        inset 0 1.5px 0 rgba(255,255,255,0.55),
+        inset 0 -1.5px 0 rgba(0,0,0,0.07);
+      transform: translateY(-1.5px);
+    }
+    .btn-lime:active { transform: translateY(0.5px); }
 
     /* ── Underline hover links ── */
     .hover-ul {
@@ -216,25 +247,22 @@
   <!-- ══════════════════════════════════════════════
        NAVBAR
   ══════════════════════════════════════════════ -->
-  <nav aria-label="Hauptnavigation" style="position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:50;width:calc(100% - 32px);max-width:900px;">
-    <div class="nav-pill rounded-full px-5 py-3 flex items-center justify-between gap-4">
+  <nav aria-label="Hauptnavigation" style="position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:50;width:calc(100% - 32px);max-width:980px;">
+    <div class="nav-pill rounded-full flex items-center justify-between gap-4" style="padding:.65rem 1rem .65rem 1.5rem;">
       <!-- Logo -->
-      <a href="#" class="font-display text-cream font-semibold text-xl tracking-tight shrink-0">
+      <a href="/" class="font-display text-cream font-semibold shrink-0" style="font-size:1.2rem;text-decoration:none;letter-spacing:-.01em;">
         R<span style="color:#C9F03C">&amp;</span>N
       </a>
       <!-- Links -->
-      <div class="hidden md:flex items-center gap-7 text-sm" style="color:#8C8680">
-        <a href="#leistungen" class="hover-ul hover:text-cream transition-colors duration-200">Leistungen</a>
-        <a href="#arbeiten"   class="hover-ul hover:text-cream transition-colors duration-200">Arbeiten</a>
-        <a href="#studio"     class="hover-ul hover:text-cream transition-colors duration-200">Studio</a>
-        <a href="/team.html"        class="hover-ul hover:text-cream transition-colors duration-200">Team</a>
-        <a href="/referenzen.html" class="hover-ul hover:text-cream transition-colors duration-200">Referenzen</a>
-        <a href="#prozess"    class="hover-ul hover:text-cream transition-colors duration-200">Prozess</a>
+      <div class="hidden md:flex items-center gap-6" style="font-size:.8rem;">
+        <a href="#leistungen" style="color:#8C8680;text-decoration:none;transition:color .2s ease;white-space:nowrap;" onmouseover="this.style.color='#F0E8DC'" onmouseout="this.style.color='#8C8680'">Leistungen</a>
+        <a href="#arbeiten"   style="color:#8C8680;text-decoration:none;transition:color .2s ease;white-space:nowrap;" onmouseover="this.style.color='#F0E8DC'" onmouseout="this.style.color='#8C8680'">Arbeiten</a>
+        <a href="/team.html"  style="color:#8C8680;text-decoration:none;transition:color .2s ease;white-space:nowrap;" onmouseover="this.style.color='#F0E8DC'" onmouseout="this.style.color='#8C8680'">Team</a>
+        <a href="/referenzen.html" style="color:#8C8680;text-decoration:none;transition:color .2s ease;white-space:nowrap;" onmouseover="this.style.color='#F0E8DC'" onmouseout="this.style.color='#8C8680'">Referenzen</a>
+        <a href="#kontakt"    style="color:#8C8680;text-decoration:none;transition:color .2s ease;white-space:nowrap;" onmouseover="this.style.color='#F0E8DC'" onmouseout="this.style.color='#8C8680'">Kontakt</a>
       </div>
       <!-- CTA -->
-      <a href="#kontakt" style="background:#C9F03C;color:#0A0908;border-radius:9999px;padding:0.5rem 1.25rem;font-size:0.875rem;font-weight:600;white-space:nowrap;transition:opacity 0.2s ease;cursor:pointer;" onmouseover="this.style.opacity='0.82'" onmouseout="this.style.opacity='1'">
-        Kontakt
-      </a>
+      <a href="/termin.html" class="btn-lime" style="padding:.5rem 1.2rem;font-size:.8rem;">Termin buchen</a>
     </div>
   </nav>
 
@@ -274,10 +302,10 @@
           Für kleine Unternehmen mit großen Visionen.
         </p>
         <div class="flex items-center flex-wrap" style="gap:0.75rem;">
-          <a href="#leistungen" style="border:1px solid #2A2825;color:#F0E8DC;border-radius:9999px;padding:0.75rem 1.5rem;font-size:0.875rem;font-weight:500;transition:border-color 0.2s ease;cursor:pointer;text-decoration:none;" onmouseover="this.style.borderColor='#C9F03C'" onmouseout="this.style.borderColor='#2A2825'">
+          <a href="#leistungen" style="color:#8C8680;text-decoration:none;border:1px solid rgba(255,255,255,0.1);border-radius:9999px;padding:0.75rem 1.5rem;font-size:0.875rem;font-weight:500;transition:border-color .2s ease,color .2s ease;cursor:pointer;backdrop-filter:blur(8px);background:rgba(255,255,255,0.03);" onmouseover="this.style.borderColor='rgba(201,240,60,0.4)';this.style.color='#F0E8DC'" onmouseout="this.style.borderColor='rgba(255,255,255,0.1)';this.style.color='#8C8680'">
             Leistungen
           </a>
-          <a href="#kontakt" style="background:#F0E8DC;color:#0A0908;border-radius:9999px;padding:0.75rem 1.5rem;font-size:0.875rem;font-weight:600;transition:background-color 0.2s ease;cursor:pointer;text-decoration:none;" onmouseover="this.style.background='#C9F03C'" onmouseout="this.style.background='#F0E8DC'">
+          <a href="#kontakt" class="btn-lime" style="padding:0.75rem 1.75rem;font-size:0.875rem;">
             Projekt starten
           </a>
         </div>
@@ -661,7 +689,7 @@
       <p class="reveal" style="color:#8C8680;font-size:1.1rem;margin-bottom:2.5rem;transition-delay:0.1s;">
         Lass uns dein Projekt besprechen — unverbindlich und kostenlos.
       </p>
-      <a href="/termin.html" class="reveal" style="display:inline-block;background:#C9F03C;color:#0A0908;font-weight:600;border-radius:9999px;padding:1rem 2.5rem;font-size:1rem;text-decoration:none;transition:opacity 0.2s ease;cursor:pointer;transition-delay:0.2s;" onmouseover="this.style.opacity='0.82'" onmouseout="this.style.opacity='1'">
+      <a href="/termin.html" class="reveal btn-lime" style="padding:1rem 2.5rem;font-size:1rem;transition-delay:0.2s;">
         Jetzt Gespräch anfragen
       </a>
     </div>
@@ -724,7 +752,7 @@
           <label for="message" style="color:#5C5651;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.18em;display:block;margin-bottom:0.5rem;">Nachricht</label>
           <textarea id="message" name="message" rows="4" class="field" placeholder="Erzähl uns von deinem Projekt..."></textarea>
         </div>
-        <button id="submit-btn" type="submit" style="width:100%;background:#C9F03C;color:#0A0908;font-family:'Syne',sans-serif;font-weight:600;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.15em;padding:1rem;border-radius:9999px;border:none;cursor:pointer;transition:opacity 0.2s ease;" onmouseover="if(!this.disabled)this.style.opacity='0.82'" onmouseout="if(!this.disabled)this.style.opacity='1'">
+        <button id="submit-btn" type="submit" class="btn-lime" style="width:100%;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.15em;padding:1rem;">
           Nachricht senden
         </button>
         <p id="form-success" style="color:#C9F03C;font-size:0.875rem;text-align:center;display:none;" role="alert">

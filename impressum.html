@@ -54,11 +54,42 @@
       z-index: 9998;
     }
     .nav-pill {
-      background: rgba(10,9,8,0.82);
-      backdrop-filter: blur(22px);
-      -webkit-backdrop-filter: blur(22px);
-      border: 1px solid #1E1C1A;
+      background: rgba(10,9,8,0.10);
+      backdrop-filter: blur(64px) saturate(200%);
+      -webkit-backdrop-filter: blur(64px) saturate(200%);
+      border: 1px solid rgba(255,255,255,0.07);
+      box-shadow:
+        0 8px 40px rgba(0,0,0,0.45),
+        inset 0 1.5px 0 rgba(255,255,255,0.1),
+        inset 0 -1px 0 rgba(0,0,0,0.35);
     }
+    .btn-lime {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(170deg, #E2FF52 0%, #C9F03C 55%, #AFCF27 100%);
+      color: #0A0908 !important;
+      font-weight: 700;
+      border-radius: 9999px;
+      white-space: nowrap;
+      cursor: pointer;
+      border: none;
+      text-decoration: none !important;
+      font-family: 'Syne', system-ui, sans-serif;
+      box-shadow:
+        0 2px 20px rgba(201,240,60,0.4),
+        inset 0 1.5px 0 rgba(255,255,255,0.5),
+        inset 0 -1.5px 0 rgba(0,0,0,0.07);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-lime:hover {
+      box-shadow:
+        0 4px 28px rgba(201,240,60,0.65),
+        inset 0 1.5px 0 rgba(255,255,255,0.55),
+        inset 0 -1.5px 0 rgba(0,0,0,0.07);
+      transform: translateY(-1.5px);
+    }
+    .btn-lime:active { transform: translateY(0.5px); }
     a:focus-visible, button:focus-visible {
       outline: 2px solid #C9F03C;
       outline-offset: 3px;
@@ -75,17 +106,19 @@
 <body>
 
   <!-- NAVBAR -->
-  <nav aria-label="Hauptnavigation" style="position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:50;width:calc(100% - 32px);max-width:900px;">
-    <div class="nav-pill rounded-full px-5 py-3 flex items-center justify-between gap-4">
-      <a href="/" class="font-display text-cream font-semibold text-xl tracking-tight shrink-0" style="text-decoration:none;">
+  <nav aria-label="Hauptnavigation" style="position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:50;width:calc(100% - 32px);max-width:980px;">
+    <div class="nav-pill rounded-full flex items-center justify-between gap-4" style="padding:.65rem 1rem .65rem 1.5rem;">
+      <a href="/" class="font-display text-cream font-semibold shrink-0" style="font-size:1.2rem;text-decoration:none;letter-spacing:-.01em;">
         R<span style="color:#C9F03C">&amp;</span>N
       </a>
-      <a href="/" style="color:#8C8680;font-size:0.875rem;text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='#F0E8DC'" onmouseout="this.style.color='#8C8680'">
-        ← Zurück zur Website
-      </a>
-      <a href="/#kontakt" style="background:#C9F03C;color:#0A0908;border-radius:9999px;padding:0.5rem 1.25rem;font-size:0.875rem;font-weight:600;white-space:nowrap;text-decoration:none;transition:opacity 0.2s ease;" onmouseover="this.style.opacity='0.82'" onmouseout="this.style.opacity='1'">
-        Kontakt
-      </a>
+      <div class="hidden md:flex items-center gap-6" style="font-size:.8rem;">
+        <a href="/#leistungen" style="color:#8C8680;text-decoration:none;transition:color .2s ease;white-space:nowrap;" onmouseover="this.style.color='#F0E8DC'" onmouseout="this.style.color='#8C8680'">Leistungen</a>
+        <a href="/#arbeiten"   style="color:#8C8680;text-decoration:none;transition:color .2s ease;white-space:nowrap;" onmouseover="this.style.color='#F0E8DC'" onmouseout="this.style.color='#8C8680'">Arbeiten</a>
+        <a href="/team.html"   style="color:#8C8680;text-decoration:none;transition:color .2s ease;white-space:nowrap;" onmouseover="this.style.color='#F0E8DC'" onmouseout="this.style.color='#8C8680'">Team</a>
+        <a href="/referenzen.html" style="color:#8C8680;text-decoration:none;transition:color .2s ease;white-space:nowrap;" onmouseover="this.style.color='#F0E8DC'" onmouseout="this.style.color='#8C8680'">Referenzen</a>
+        <a href="/#kontakt"    style="color:#8C8680;text-decoration:none;transition:color .2s ease;white-space:nowrap;" onmouseover="this.style.color='#F0E8DC'" onmouseout="this.style.color='#8C8680'">Kontakt</a>
+      </div>
+      <a href="/termin.html" class="btn-lime" style="padding:.5rem 1.2rem;font-size:.8rem;">Termin buchen</a>
     </div>
   </nav>
 
