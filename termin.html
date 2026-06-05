@@ -63,6 +63,29 @@
       z-index: 9998;
     }
 
+    .nav-link {
+      position: relative;
+      color: #8C8680;
+      text-decoration: none;
+      white-space: nowrap;
+      padding: 0.38rem 0.8rem;
+      border-radius: 9999px;
+      border: 1px solid transparent;
+      transition: color 0.22s ease, background 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+    }
+    .nav-link:hover {
+      color: #F0E8DC;
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(255,255,255,0.1);
+      box-shadow:
+        0 2px 14px rgba(0,0,0,0.28),
+        inset 0 1.5px 0 rgba(255,255,255,0.13),
+        inset 0 -1px 0 rgba(0,0,0,0.18);
+    }
+    .nav-link-active {
+      color: #C9F03C !important;
+      font-weight: 700;
+    }
     .nav-pill {
       background: rgba(10,9,8,0.04);
       backdrop-filter: blur(64px) saturate(200%);
@@ -237,12 +260,12 @@
       <a href="/" class="font-display text-cream font-semibold shrink-0" style="font-size:1.2rem;text-decoration:none;letter-spacing:-.01em;">
         R<span style="color:#C9F03C">&amp;</span>N
       </a>
-      <div class="hidden md:flex items-center gap-6" style="font-size:.8rem;">
-        <a href="/#leistungen" style="color:#8C8680;text-decoration:none;transition:color .2s ease;white-space:nowrap;" onmouseover="this.style.color='#F0E8DC'" onmouseout="this.style.color='#8C8680'">Leistungen</a>
-        <a href="/#arbeiten"   style="color:#8C8680;text-decoration:none;transition:color .2s ease;white-space:nowrap;" onmouseover="this.style.color='#F0E8DC'" onmouseout="this.style.color='#8C8680'">Arbeiten</a>
-        <a href="/team.html"   style="color:#8C8680;text-decoration:none;transition:color .2s ease;white-space:nowrap;" onmouseover="this.style.color='#F0E8DC'" onmouseout="this.style.color='#8C8680'">Team</a>
-        <a href="/referenzen.html" style="color:#8C8680;text-decoration:none;transition:color .2s ease;white-space:nowrap;" onmouseover="this.style.color='#F0E8DC'" onmouseout="this.style.color='#8C8680'">Referenzen</a>
-        <a href="/#kontakt"    style="color:#8C8680;text-decoration:none;transition:color .2s ease;white-space:nowrap;" onmouseover="this.style.color='#F0E8DC'" onmouseout="this.style.color='#8C8680'">Kontakt</a>
+      <div class="hidden md:flex items-center" style="font-size:.8rem;gap:.25rem;">
+        <a href="/#leistungen"     class="nav-link">Leistungen</a>
+        <a href="/#arbeiten"       class="nav-link">Arbeiten</a>
+        <a href="/team.html"       class="nav-link">Team</a>
+        <a href="/referenzen.html" class="nav-link">Referenzen</a>
+        <a href="/#kontakt"        class="nav-link">Kontakt</a>
       </div>
       <div style="display:flex;align-items:center;gap:.75rem;">
         <a href="/termin.html" class="btn-lime nav-cta-desktop" style="padding:.5rem 1.2rem;font-size:.8rem;">Termin buchen</a>
