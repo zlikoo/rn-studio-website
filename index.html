@@ -207,6 +207,9 @@
         inset 0 1.5px 0 rgba(255,255,255,0.13),
         inset 0 -1px 0 rgba(0,0,0,0.18);
     }
+    .nav-link-active {
+      color: #C9F03C !important;
+    }
 
     /* ── Floating nav ── */
     .nav-pill {
@@ -1041,6 +1044,40 @@
       }
       window.addEventListener('scroll', update, { passive: true });
       update();
+    })();
+
+    // Scroll-Spy: aktiver Abschnitt hebt Nav-Link grün hervor
+    (function() {
+      var sections = [
+        { id: 'leistungen', href: '#leistungen' },
+        { id: 'arbeiten',   href: '#arbeiten' },
+        { id: 'kontakt',    href: '#kontakt' },
+      ];
+      var links = document.querySelectorAll('.nav-link');
+
+      function getActiveLink() {
+        var scrollY = window.scrollY + 120;
+        var active = null;
+        sections.forEach(function(s) {
+          var el = document.getElementById(s.id);
+          if (el && el.offsetTop <= scrollY) active = s.href;
+        });
+        return active;
+      }
+
+      function updateActive() {
+        var activeHref = getActiveLink();
+        links.forEach(function(link) {
+          if (link.getAttribute('href') === activeHref) {
+            link.classList.add('nav-link-active');
+          } else {
+            link.classList.remove('nav-link-active');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', updateActive, { passive: true });
+      updateActive();
     })();
   </script>
 
