@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Referenzen — R&amp;N Studio</title>
+  <meta name="description" content="Was unsere Kunden über R&N Studio sagen — echte Stimmen, echte Ergebnisse.">
+  <link rel="canonical" href="https://rn-studio.de/referenzen.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rn-studio.de/referenzen.html">
+  <meta property="og:title" content="Referenzen — R&amp;N Studio">
+  <meta property="og:description" content="Was unsere Kunden über R&N Studio sagen.">
+  <meta property="og:locale" content="de_DE">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,300;9..144,0,400;9..144,0,600;9..144,0,700;9..144,1,300;9..144,1,400&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink:    '#0A0908',
+            cream:  '#F0E8DC',
+            lime:   '#C9F03C',
+            muted:  '#5C5651',
+            border: '#1E1C1A',
+            mid:    '#8C8680',
+          },
+          fontFamily: {
+            display: ['Fraunces', 'Georgia', 'serif'],
+            sans:    ['Syne', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: #0A0908;
+      color: #F0E8DC;
+      font-family: 'Syne', system-ui, sans-serif;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.032;
+      pointer-events: none;
+      z-index: 9998;
+    }
+    .nav-pill {
+      background: rgba(10,9,8,0.82);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border: 1px solid #1E1C1A;
+    }
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid #C9F03C;
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    /* ── Testimonial cards ── */
+    .t-card {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transform: translateX(48px) scale(0.97);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+      pointer-events: none;
+    }
+    .t-card.active {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+      pointer-events: auto;
+    }
+
+    /* Nav dots */
+    .nav-dot {
+      height: 10px;
+      border-radius: 9999px;
+      background: #2A2825;
+      transition: width 0.3s ease, background 0.3s ease;
+      width: 10px;
+      cursor: pointer;
+      border: none;
+      padding: 0;
+    }
+    .nav-dot.active {
+      width: 36px;
+      background: #C9F03C;
+    }
+
+    /* Stars */
+    .star { color: #EAB308; }
+
+    /* Separator */
+    .sep { border: none; border-top: 1px solid #1E1C1A; margin: 1.5rem 0; }
+
+    /* Avatar */
+    .avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid #1E1C1A;
+      flex-shrink: 0;
+    }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* Reveal animation */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .t-card, .nav-dot, .reveal { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ NAVBAR ══ -->
+  <nav aria-label="Hauptnavigation" style="position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:50;width:calc(100% - 32px);max-width:900px;">
+    <div class="nav-pill rounded-full px-5 py-3 flex items-center justify-between gap-4">
+      <a href="/" style="font-family:'Fraunces',Georgia,serif;color:#F0E8DC;font-weight:600;font-size:1.25rem;letter-spacing:-.01em;text-decoration:none;flex-shrink:0;">
+        R<span style="color:#C9F03C">&amp;</span>N
+      </a>
+      <a href="/" style="color:#8C8680;font-size:.875rem;text-decoration:none;transition:color .2s ease;" onmouseover="this.style.color='#F0E8DC'" onmouseout="this.style.color='#8C8680'">
+        ← Zurück zur Website
+      </a>
+      <a href="/termin.html" style="background:#C9F03C;color:#0A0908;border-radius:9999px;padding:.5rem 1.25rem;font-size:.875rem;font-weight:600;white-space:nowrap;text-decoration:none;transition:opacity .2s ease;" onmouseover="this.style.opacity='.82'" onmouseout="this.style.opacity='1'">
+        Termin buchen
+      </a>
+    </div>
+  </nav>
+
+
+  <!-- ══ HERO HEADER ══ -->
+  <div style="max-width:1280px;margin:0 auto;padding:10rem 1.5rem 0;">
+    <div class="reveal">
+      <p style="color:#5C5651;font-size:.75rem;text-transform:uppercase;letter-spacing:.18em;margin-bottom:1rem;">Kundenstimmen</p>
+      <h1 style="font-family:'Fraunces',Georgia,serif;font-size:clamp(3rem,8vw,6.5rem);font-weight:600;line-height:.9;color:#F0E8DC;margin-bottom:1.5rem;">
+        Was unsere<br><em style="font-weight:300;color:#C9F03C;">Kunden sagen.</em>
+      </h1>
+    </div>
+  </div>
+
+
+  <!-- ══ MAIN TESTIMONIAL SECTION ══ -->
+  <main style="max-width:1280px;margin:0 auto;padding:5rem 1.5rem 8rem;">
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:5rem;align-items:center;">
+
+      <!-- LEFT: Info + dots -->
+      <div class="reveal" style="transition-delay:.1s;">
+
+        <!-- Badge -->
+        <div style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(201,240,60,0.08);border:1px solid rgba(201,240,60,0.2);border-radius:9999px;padding:.35rem 1rem;font-size:.75rem;color:#C9F03C;font-weight:600;text-transform:uppercase;letter-spacing:.12em;margin-bottom:2rem;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="#C9F03C" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          Von Kunden empfohlen
+        </div>
+
+        <h2 style="font-family:'Fraunces',Georgia,serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:600;line-height:1.05;color:#F0E8DC;margin-bottom:1.25rem;">
+          Echte Projekte.<br><em style="font-weight:300;">Echte Ergebnisse.</em>
+        </h2>
+        <p style="color:#8C8680;line-height:1.7;font-size:.975rem;max-width:400px;margin-bottom:2.5rem;">
+          Wir messen unseren Erfolg am Erfolg unserer Kunden. Lies selbst, was kleine Unternehmen über die Zusammenarbeit mit R&amp;N Studio sagen.
+        </p>
+
+        <!-- Navigation dots -->
+        <div id="dots" style="display:flex;align-items:center;gap:.75rem;margin-bottom:3rem;" role="group" aria-label="Testimonial-Navigation"></div>
+
+        <!-- Stats row -->
+        <div style="display:flex;gap:2.5rem;padding-top:2rem;border-top:1px solid #1E1C1A;">
+          <div>
+            <span style="font-family:'Fraunces',Georgia,serif;font-size:2.2rem;font-weight:700;color:#F0E8DC;">50<span style="color:#C9F03C;">+</span></span>
+            <p style="color:#5C5651;font-size:.75rem;margin-top:.2rem;">Zufriedene Kunden</p>
+          </div>
+          <div>
+            <span style="font-family:'Fraunces',Georgia,serif;font-size:2.2rem;font-weight:700;color:#F0E8DC;">5<span style="color:#C9F03C;">★</span></span>
+            <p style="color:#5C5651;font-size:.75rem;margin-top:.2rem;">Durchschnittsbewertung</p>
+          </div>
+          <div>
+            <span style="font-family:'Fraunces',Georgia,serif;font-size:2.2rem;font-weight:700;color:#F0E8DC;">3<span style="color:#C9F03C;">+</span></span>
+            <p style="color:#5C5651;font-size:.75rem;margin-top:.2rem;">Jahre Erfahrung</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: Testimonial cards -->
+      <div class="reveal" style="transition-delay:.22s;">
+        <div id="cards-wrap" style="position:relative;min-height:400px;">
+
+          <!-- Card 1 -->
+          <div class="t-card active" data-index="0">
+            <div style="background:#0F0E0D;border:1px solid #1E1C1A;border-radius:20px;padding:2.5rem;height:100%;display:flex;flex-direction:column;">
+              <!-- Stars -->
+              <div style="display:flex;gap:.3rem;margin-bottom:1.5rem;">
+                <svg class="star" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="star" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="star" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="star" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="star" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <!-- Quote -->
+              <div style="position:relative;flex:1;margin-bottom:1.5rem;">
+                <svg aria-hidden="true" style="position:absolute;top:-8px;left:-8px;width:40px;height:40px;color:rgba(201,240,60,0.15);transform:rotate(180deg);" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                <p style="position:relative;z-index:1;color:#F0E8DC;font-size:1.05rem;line-height:1.75;font-style:italic;">
+                  "R&amp;N Studio hat unsere Marke komplett neu definiert. Das neue Corporate Design ist nicht nur schön — es erzählt wirklich unsere Geschichte. Die Zusammenarbeit war unkompliziert, schnell und absolut professionell."
+                </p>
+              </div>
+              <hr class="sep">
+              <div style="display:flex;align-items:center;gap:1rem;">
+                <div class="avatar">
+                  <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&crop=face&q=80" alt="Markus Bauer" loading="lazy">
+                </div>
+                <div>
+                  <p style="font-weight:700;color:#F0E8DC;font-size:.9rem;">Markus Bauer</p>
+                  <p style="color:#5C5651;font-size:.78rem;margin-top:.15rem;">Inhaber · Bäckerei Bauer GmbH</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="t-card" data-index="1">
+            <div style="background:#0F0E0D;border:1px solid #1E1C1A;border-radius:20px;padding:2.5rem;height:100%;display:flex;flex-direction:column;">
+              <div style="display:flex;gap:.3rem;margin-bottom:1.5rem;">
+                <svg class="star" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="star" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="star" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="star" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="star" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <div style="position:relative;flex:1;margin-bottom:1.5rem;">
+                <svg aria-hidden="true" style="position:absolute;top:-8px;left:-8px;width:40px;height:40px;color:rgba(201,240,60,0.15);transform:rotate(180deg);" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                <p style="position:relative;z-index:1;color:#F0E8DC;font-size:1.05rem;line-height:1.75;font-style:italic;">
+                  "Unsere Instagram-Präsenz hat sich durch R&amp;N Studio komplett verändert. Die Content-Vorlagen sind so durchdacht, dass wir jetzt eigenständig professionelle Posts erstellen können. Reichweite und Anfragen sind deutlich gestiegen."
+                </p>
+              </div>
+              <hr class="sep">
+              <div style="display:flex;align-items:center;gap:1rem;">
+                <div class="avatar">
+                  <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=100&h=100&fit=crop&crop=face&q=80" alt="Laura Schmidt" loading="lazy">
+                </div>
+                <div>
+                  <p style="font-weight:700;color:#F0E8DC;font-size:.9rem;">Laura Schmidt</p>
+                  <p style="color:#5C5651;font-size:.78rem;margin-top:.15rem;">Marketing Managerin · FitLife Studio</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="t-card" data-index="2">
+            <div style="background:#0F0E0D;border:1px solid #1E1C1A;border-radius:20px;padding:2.5rem;height:100%;display:flex;flex-direction:column;">
+              <div style="display:flex;gap:.3rem;margin-bottom:1.5rem;">
+                <svg class="star" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="star" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="star" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="star" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="star" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <div style="position:relative;flex:1;margin-bottom:1.5rem;">
+                <svg aria-hidden="true" style="position:absolute;top:-8px;left:-8px;width:40px;height:40px;color:rgba(201,240,60,0.15);transform:rotate(180deg);" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                <p style="position:relative;z-index:1;color:#F0E8DC;font-size:1.05rem;line-height:1.75;font-style:italic;">
+                  "Wir haben eine neue Website und ein komplettes Branding-Paket bekommen — innerhalb von drei Wochen. Die Qualität ist auf einem Niveau, das ich sonst nur von teuren Agenturen kenne. Für ein kleines Unternehmen wie unseres ist R&amp;N genau das Richtige."
+                </p>
+              </div>
+              <hr class="sep">
+              <div style="display:flex;align-items:center;gap:1rem;">
+                <div class="avatar">
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face&q=80" alt="Thomas Weber" loading="lazy">
+                </div>
+                <div>
+                  <p style="font-weight:700;color:#F0E8DC;font-size:.9rem;">Thomas Weber</p>
+                  <p style="color:#5C5651;font-size:.78rem;margin-top:.15rem;">Gründer · Weber Consulting</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="t-card" data-index="3">
+            <div style="background:#0F0E0D;border:1px solid #1E1C1A;border-radius:20px;padding:2.5rem;height:100%;display:flex;flex-direction:column;">
+              <div style="display:flex;gap:.3rem;margin-bottom:1.5rem;">
+                <svg class="star" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="star" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="star" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="star" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg class="star" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <div style="position:relative;flex:1;margin-bottom:1.5rem;">
+                <svg aria-hidden="true" style="position:absolute;top:-8px;left:-8px;width:40px;height:40px;color:rgba(201,240,60,0.15);transform:rotate(180deg);" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                <p style="position:relative;z-index:1;color:#F0E8DC;font-size:1.05rem;line-height:1.75;font-style:italic;">
+                  "Das Packaging-Design, das Rina für uns entwickelt hat, hat auf der Messe für echte Begeisterung gesorgt. Mehrere Händler haben uns direkt angesprochen. Ohne R&amp;N Studio wäre das nie so wirkungsvoll geworden."
+                </p>
+              </div>
+              <hr class="sep">
+              <div style="display:flex;align-items:center;gap:1rem;">
+                <div class="avatar">
+                  <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&crop=face&q=80" alt="Nadia Hoffmann" loading="lazy">
+                </div>
+                <div>
+                  <p style="font-weight:700;color:#F0E8DC;font-size:.9rem;">Nadia Hoffmann</p>
+                  <p style="color:#5C5651;font-size:.78rem;margin-top:.15rem;">Gründerin · NaturKern Lebensmittel</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Decorative blobs -->
+          <div aria-hidden="true" style="position:absolute;bottom:-24px;left:-24px;width:96px;height:96px;border-radius:16px;background:rgba(201,240,60,0.04);pointer-events:none;"></div>
+          <div aria-hidden="true" style="position:absolute;top:-24px;right:-24px;width:96px;height:96px;border-radius:16px;background:rgba(201,240,60,0.04);pointer-events:none;"></div>
+
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- ══ LOGO CLOUD ══ -->
+    <div class="reveal" style="margin-top:7rem;padding-top:4rem;border-top:1px solid #1E1C1A;text-align:center;transition-delay:.3s;">
+      <p style="color:#3A3834;font-size:.7rem;text-transform:uppercase;letter-spacing:.2em;margin-bottom:2.5rem;">Kunden, die uns vertrauen</p>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:2.5rem 4rem;">
+        <span style="font-family:'Fraunces',Georgia,serif;font-size:1.35rem;font-weight:600;color:#2A2825;letter-spacing:-.01em;">MANTARIS</span>
+        <span style="font-family:'Fraunces',Georgia,serif;font-size:1.35rem;font-weight:600;color:#2A2825;letter-spacing:-.01em;">Pick'n'Bite</span>
+        <span style="font-family:'Fraunces',Georgia,serif;font-size:1.35rem;font-weight:600;color:#2A2825;letter-spacing:-.01em;">Meridian</span>
+        <span style="font-family:'Fraunces',Georgia,serif;font-size:1.35rem;font-weight:600;color:#2A2825;letter-spacing:-.01em;">CAUCAU</span>
+        <span style="font-family:'Fraunces',Georgia,serif;font-size:1.35rem;font-weight:600;color:#2A2825;letter-spacing:-.01em;">SPILATY</span>
+        <span style="font-family:'Fraunces',Georgia,serif;font-size:1.35rem;font-weight:600;color:#2A2825;letter-spacing:-.01em;">Odysseus</span>
+      </div>
+    </div>
+
+
+    <!-- ══ CTA ══ -->
+    <div class="reveal" style="margin-top:6rem;text-align:center;transition-delay:.4s;">
+      <p style="color:#5C5651;font-size:.75rem;text-transform:uppercase;letter-spacing:.18em;margin-bottom:1rem;">Nächster Schritt</p>
+      <h2 style="font-family:'Fraunces',Georgia,serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:600;line-height:1;color:#F0E8DC;margin-bottom:1.5rem;">
+        Werde unser nächster<br><em style="font-weight:300;color:#C9F03C;">Erfolg.</em>
+      </h2>
+      <a href="/termin.html" style="display:inline-block;background:#C9F03C;color:#0A0908;font-weight:600;border-radius:9999px;padding:1rem 2.5rem;font-size:1rem;text-decoration:none;transition:opacity .2s ease;" onmouseover="this.style.opacity='.82'" onmouseout="this.style.opacity='1'">
+        Jetzt Gespräch anfragen
+      </a>
+    </div>
+
+  </main>
+
+
+  <!-- ══ FOOTER ══ -->
+  <footer style="padding:2rem 1.5rem;border-top:1px solid #1E1C1A;">
+    <div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;">
+      <span style="font-family:'Fraunces',Georgia,serif;color:#F0E8DC;font-weight:600;font-size:1.2rem;">R<span style="color:#C9F03C;">&amp;</span>N Studio</span>
+      <p style="color:#3A3834;font-size:.8rem;">© 2025 R&amp;N Studio GbR. Alle Rechte vorbehalten.</p>
+      <nav style="display:flex;gap:1.5rem;">
+        <a href="/impressum.html" style="color:#5C5651;font-size:.8rem;text-decoration:none;transition:color .2s ease;" onmouseover="this.style.color='#F0E8DC'" onmouseout="this.style.color='#5C5651'">Impressum</a>
+        <a href="#" style="color:#5C5651;font-size:.8rem;text-decoration:none;transition:color .2s ease;" onmouseover="this.style.color='#F0E8DC'" onmouseout="this.style.color='#5C5651'">Datenschutz</a>
+      </nav>
+    </div>
+  </footer>
+
+
+  <script>
+    const TOTAL = 4;
+    let active = 0;
+    let timer;
+
+    const cards = document.querySelectorAll('.t-card');
+    const dotsWrap = document.getElementById('dots');
+
+    // Build dots
+    for (let i = 0; i < TOTAL; i++) {
+      const btn = document.createElement('button');
+      btn.className = 'nav-dot' + (i === 0 ? ' active' : '');
+      btn.setAttribute('aria-label', `Testimonial ${i + 1} anzeigen`);
+      btn.addEventListener('click', () => { goTo(i); resetTimer(); });
+      dotsWrap.appendChild(btn);
+    }
+
+    function goTo(index) {
+      cards[active].classList.remove('active');
+      dotsWrap.children[active].classList.remove('active');
+      active = index;
+      cards[active].classList.add('active');
+      dotsWrap.children[active].classList.add('active');
+    }
+
+    function next() { goTo((active + 1) % TOTAL); }
+
+    function resetTimer() {
+      clearInterval(timer);
+      timer = setInterval(next, 6000);
+    }
+
+    resetTimer();
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
