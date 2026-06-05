@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
@@ -54,7 +54,7 @@
       z-index: 9998;
     }
     .nav-pill {
-      background: rgba(10,9,8,0.10);
+      background: rgba(10,9,8,0.04);
       backdrop-filter: blur(64px) saturate(200%);
       -webkit-backdrop-filter: blur(64px) saturate(200%);
       border: 1px solid rgba(255,255,255,0.07);
@@ -90,6 +90,7 @@
       transform: translateY(-1.5px);
     }
     .btn-lime:active { transform: translateY(0.5px); }
+    .nav-pill { transition: padding 0.4s ease, background 0.4s ease; }
     a:focus-visible, button:focus-visible {
       outline: 2px solid #C9F03C;
       outline-offset: 3px;
@@ -107,7 +108,7 @@
 
   <!-- NAVBAR -->
   <nav aria-label="Hauptnavigation" style="position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:50;width:calc(100% - 32px);max-width:980px;">
-    <div class="nav-pill rounded-full flex items-center justify-between gap-4" style="padding:.65rem 1rem .65rem 1.5rem;">
+    <div class="nav-pill rounded-full flex items-center justify-between gap-4" id="nav-pill" style="padding:1.1rem 1.25rem 1.1rem 1.75rem;">
       <a href="/" class="font-display text-cream font-semibold shrink-0" style="font-size:1.2rem;text-decoration:none;letter-spacing:-.01em;">
         R<span style="color:#C9F03C">&amp;</span>N
       </a>
@@ -249,5 +250,23 @@
     </div>
   </footer>
 
+  <script>
+    (function() {
+      var pill = document.getElementById('nav-pill');
+      function update() {
+        if (window.scrollY > 60) {
+          pill.style.padding = '.65rem 1rem .65rem 1.5rem';
+          pill.style.background = 'rgba(10,9,8,0.18)';
+        } else {
+          pill.style.padding = '1.1rem 1.25rem 1.1rem 1.75rem';
+          pill.style.background = 'rgba(10,9,8,0.04)';
+        }
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      update();
+    })();
+  </script>
+
+</body>
 </body>
 </html>
