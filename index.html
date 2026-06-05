@@ -793,6 +793,9 @@
 
       <!-- Right: Form -->
       <form class="reveal" style="display:flex;flex-direction:column;gap:2rem;transition-delay:0.16s;" onsubmit="handleSubmit(event)" novalidate>
+        <input type="hidden" name="access_key" value="28574e31-176b-4c46-8ea4-8200bd69fe2a">
+        <input type="hidden" name="subject" value="Neue Kontaktanfrage — R&N Studio">
+        <input type="hidden" name="from_name" value="R&N Studio Website">
         <div>
           <label for="name" style="color:#5C5651;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.18em;display:block;margin-bottom:0.5rem;">Name *</label>
           <input id="name" name="name" type="text" class="field" placeholder="Dein Name" required aria-required="true">
@@ -898,7 +901,7 @@
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
     // Form submit
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
       e.preventDefault();
       const form = e.target;
       const name = form.querySelector('#name').value.trim();
@@ -912,11 +915,39 @@
       btn.style.opacity = '0.5';
       btn.style.cursor = 'not-allowed';
       btn.textContent = 'Wird gesendet...';
-      // Simulated send
-      setTimeout(() => {
-        btn.style.display = 'none';
-        document.getElementById('form-success').style.display = 'block';
-      }, 800);
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            access_key: '28574e31-176b-4c46-8ea4-8200bd69fe2a',
+            subject: 'Neue Kontaktanfrage — R&N Studio',
+            from_name: 'R&N Studio Website',
+            name: name,
+            email: email,
+            service: form.querySelector('#service').value,
+            message: form.querySelector('#message').value.trim()
+          })
+        });
+        const data = await res.json();
+        if (data.success) {
+          btn.style.display = 'none';
+          document.getElementById('form-success').style.display = 'block';
+          form.reset();
+        } else {
+          btn.disabled = false;
+          btn.style.opacity = '1';
+          btn.style.cursor = 'pointer';
+          btn.textContent = 'Nachricht senden';
+          alert('Fehler beim Senden. Bitte versuche es erneut.');
+        }
+      } catch {
+        btn.disabled = false;
+        btn.style.opacity = '1';
+        btn.style.cursor = 'pointer';
+        btn.textContent = 'Nachricht senden';
+        alert('Fehler beim Senden. Bitte versuche es erneut.');
+      }
     }
   </script>
 
