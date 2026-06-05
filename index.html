@@ -103,20 +103,24 @@
     .service-card {
       transition: background-color 0.25s ease, color 0.25s ease;
       overflow: hidden;
+      position: relative;
     }
-    .service-card:hover {
-      background-color: #C9F03C;
-      color: #0A0908;
-    }
-    .service-card:hover .svc-num,
-    .service-card:hover .svc-arrow { color: #0A0908; }
-    .service-card:hover .svc-desc  { color: #0A0908; opacity: 0.65; }
-    .service-card:hover .svc-title { color: #0A0908; }
     .svc-img { position: relative; overflow: hidden; height: 220px; }
     .svc-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; filter: grayscale(0.2); }
     .service-card:hover .svc-img img { transform: scale(1.05); }
     .svc-img-overlay { position: absolute; inset: 0; background: #C9F03C; opacity: 0; transition: opacity 0.25s ease; }
-    .service-card:hover .svc-img-overlay { opacity: 1; }
+    .service-card .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(201,240,60,0.92);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .service-card:hover .overlay { opacity: 1; }
 
     /* ── Portfolio cards ── */
     .portfolio-card { position: relative; overflow: hidden; }
@@ -461,6 +465,10 @@
               Logo, Farben, Typografie — wir entwickeln eine unverwechselbare Identität, die dein Unternehmen sofort erkennbar macht.
             </p>
           </div>
+          <div class="overlay">
+            <span class="font-display" style="font-size:1.4rem;font-weight:600;color:#0A0908;">Branding</span>
+            <span style="font-size:0.75rem;color:#0A0908;opacity:0.65;margin-top:0.25rem;text-transform:uppercase;letter-spacing:0.15em;">Identität & Markenstrategie</span>
+          </div>
         </div>
 
         <!-- 02 Social Media -->
@@ -480,6 +488,10 @@
             <p class="svc-desc" style="color:#5C5651;line-height:1.65;font-size:0.95rem;transition:color 0.25s ease, opacity 0.25s ease;">
               Content-Erstellung, Vorlagen und Strategien, die deine Zielgruppe auf Instagram, LinkedIn &amp; Co. begeistern.
             </p>
+          </div>
+          <div class="overlay">
+            <span class="font-display" style="font-size:1.4rem;font-weight:600;color:#0A0908;">Social Media</span>
+            <span style="font-size:0.75rem;color:#0A0908;opacity:0.65;margin-top:0.25rem;text-transform:uppercase;letter-spacing:0.15em;">Content & Strategie</span>
           </div>
         </div>
 
@@ -501,6 +513,10 @@
               Schnelle, moderne Websites, die nicht nur gut aussehen, sondern auch performen — für deinen Erfolg online.
             </p>
           </div>
+          <div class="overlay">
+            <span class="font-display" style="font-size:1.4rem;font-weight:600;color:#0A0908;">Web-Entwicklung</span>
+            <span style="font-size:0.75rem;color:#0A0908;opacity:0.65;margin-top:0.25rem;text-transform:uppercase;letter-spacing:0.15em;">Design & Entwicklung</span>
+          </div>
         </div>
 
         <!-- 04 Beratung -->
@@ -520,6 +536,10 @@
             <p class="svc-desc" style="color:#5C5651;line-height:1.65;font-size:0.95rem;transition:color 0.25s ease, opacity 0.25s ease;">
               Strategische Begleitung von der Idee bis zur Umsetzung — damit dein Unternehmen mit klarer Richtung wächst.
             </p>
+          </div>
+          <div class="overlay">
+            <span class="font-display" style="font-size:1.4rem;font-weight:600;color:#0A0908;">Beratung</span>
+            <span style="font-size:0.75rem;color:#0A0908;opacity:0.65;margin-top:0.25rem;text-transform:uppercase;letter-spacing:0.15em;">Strategie & Begleitung</span>
           </div>
         </div>
 
