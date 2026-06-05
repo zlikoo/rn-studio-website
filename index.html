@@ -119,9 +119,18 @@
     .portfolio-card .placeholder-bg {
       width: 100%;
       aspect-ratio: 4/3;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .portfolio-card .placeholder-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .portfolio-card:hover .placeholder-bg img {
+      transform: scale(1.06);
     }
 
     /* ── Floating nav ── */
@@ -405,11 +414,8 @@
 
         <!-- MANTARIS -->
         <div class="portfolio-card reveal" style="cursor:pointer;">
-          <div class="placeholder-bg" style="background:linear-gradient(135deg,#0B2E52 0%,#1A5F96 100%);">
-            <div style="display:flex;flex-direction:column;align-items:center;gap:0.75rem;">
-              <span class="font-display" style="font-size:1.75rem;font-weight:700;color:rgba(255,255,255,0.13);letter-spacing:0.08em;">MANTARIS</span>
-              <span style="color:rgba(255,255,255,0.22);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.22em;">Corporate Design</span>
-            </div>
+          <div class="placeholder-bg">
+            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=720&q=80&fit=crop" alt="MANTARIS – Tauchschule Corporate Design" loading="lazy">
           </div>
           <div class="overlay" role="img" aria-label="Projekt: MANTARIS Corporate Design – Tauchschule">
             <span class="font-display" style="font-size:1.4rem;font-weight:600;color:#0A0908;">MANTARIS</span>
@@ -423,11 +429,8 @@
 
         <!-- PICK'N'BITE -->
         <div class="portfolio-card reveal" style="cursor:pointer;transition-delay:0.07s;">
-          <div class="placeholder-bg" style="background:linear-gradient(135deg,#7A3008 0%,#C85A0A 100%);">
-            <div style="display:flex;flex-direction:column;align-items:center;gap:0.75rem;">
-              <span class="font-display" style="font-size:1.75rem;font-weight:700;color:rgba(255,255,255,0.13);letter-spacing:0.05em;">pick'n'bite</span>
-              <span style="color:rgba(255,255,255,0.22);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.22em;">Corporate Design</span>
-            </div>
+          <div class="placeholder-bg">
+            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=720&q=80&fit=crop" alt="Pick'n'Bite – Fast-Food Corporate Design" loading="lazy">
           </div>
           <div class="overlay" role="img" aria-label="Projekt: Pick'n'Bite Corporate Design – Fast-Food Brand">
             <span class="font-display" style="font-size:1.4rem;font-weight:600;color:#0A0908;">Pick'n'Bite</span>
@@ -441,11 +444,8 @@
 
         <!-- MERIDIAN HOTEL -->
         <div class="portfolio-card reveal" style="cursor:pointer;transition-delay:0.14s;">
-          <div class="placeholder-bg" style="background:linear-gradient(135deg,#1A1C20 0%,#2F3036 100%);">
-            <div style="display:flex;flex-direction:column;align-items:center;gap:0.75rem;">
-              <span class="font-display" style="font-size:1.75rem;font-weight:700;color:rgba(156,91,46,0.35);letter-spacing:0.05em;">MERIDIAN</span>
-              <span style="color:rgba(156,91,46,0.3);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.22em;">Logo · Leitsystem</span>
-            </div>
+          <div class="placeholder-bg">
+            <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=720&q=80&fit=crop" alt="Meridian Hotel – Logo und Leitsystem" loading="lazy">
           </div>
           <div class="overlay" role="img" aria-label="Projekt: Meridian Hotel – Logo und Leitsystem">
             <span class="font-display" style="font-size:1.4rem;font-weight:600;color:#0A0908;">Meridian Hotel</span>
@@ -459,11 +459,8 @@
 
         <!-- CAUCAU -->
         <div class="portfolio-card reveal" style="cursor:pointer;transition-delay:0.07s;">
-          <div class="placeholder-bg" style="background:linear-gradient(135deg,#5C1A3B 0%,#993366 100%);">
-            <div style="display:flex;flex-direction:column;align-items:center;gap:0.75rem;">
-              <span class="font-display" style="font-size:1.75rem;font-weight:700;color:rgba(255,255,255,0.15);letter-spacing:0.1em;">CAUCAU</span>
-              <span style="color:rgba(255,255,255,0.22);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.22em;">Webdesign · Packaging</span>
-            </div>
+          <div class="placeholder-bg">
+            <img src="https://images.unsplash.com/photo-1511381939415-e44a853fd54c?w=720&q=80&fit=crop" alt="CAUCAU – Webdesign und Packaging Bio-Schokolade" loading="lazy">
           </div>
           <div class="overlay" role="img" aria-label="Projekt: CAUCAU – Webdesign und Verpackungsdesign Bio-Schokolade">
             <span class="font-display" style="font-size:1.4rem;font-weight:600;color:#0A0908;">CAUCAU</span>
@@ -477,11 +474,8 @@
 
         <!-- SPILATY -->
         <div class="portfolio-card reveal" style="cursor:pointer;transition-delay:0.14s;">
-          <div class="placeholder-bg" style="background:linear-gradient(135deg,#372315 0%,#6B4C30 100%);">
-            <div style="display:flex;flex-direction:column;align-items:center;gap:0.75rem;">
-              <span class="font-display" style="font-size:1.75rem;font-weight:700;color:rgba(247,234,223,0.18);letter-spacing:0.05em;">SPILATY</span>
-              <span style="color:rgba(247,234,223,0.18);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.22em;">Logo Design</span>
-            </div>
+          <div class="placeholder-bg">
+            <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=720&q=80&fit=crop" alt="SPILATY – Logo Design GenZ-Nachrichtenmagazin" loading="lazy">
           </div>
           <div class="overlay" role="img" aria-label="Projekt: SPILATY – Logo Design für GenZ-Nachrichtenmagazin">
             <span class="font-display" style="font-size:1.4rem;font-weight:600;color:#0A0908;">SPILATY</span>
@@ -495,11 +489,8 @@
 
         <!-- ODYSSEUS -->
         <div class="portfolio-card reveal" style="cursor:pointer;transition-delay:0.21s;">
-          <div class="placeholder-bg" style="background:linear-gradient(135deg,#12101A 0%,#2A2250 100%);">
-            <div style="display:flex;flex-direction:column;align-items:center;gap:0.75rem;">
-              <span class="font-display" style="font-size:1.75rem;font-weight:700;color:rgba(201,240,60,0.16);letter-spacing:0.05em;">ODYSSEUS</span>
-              <span style="color:rgba(201,240,60,0.18);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.22em;">Plakatdesign</span>
-            </div>
+          <div class="placeholder-bg">
+            <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=720&q=80&fit=crop" alt="Odysseus – Plakatdesign Gamescom" loading="lazy">
           </div>
           <div class="overlay" role="img" aria-label="Projekt: Odysseus – Werbeplakat Gamescom 2025">
             <span class="font-display" style="font-size:1.4rem;font-weight:600;color:#0A0908;">Odysseus</span>
@@ -538,8 +529,12 @@
         </p>
       </div>
 
-      <!-- Right: Stats -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#1E1C1A;">
+      <!-- Right: Photo + Stats -->
+      <div>
+        <div class="reveal" style="overflow:hidden;margin-bottom:1px;">
+          <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=880&q=80&fit=crop" alt="R&N Studio – Kreativstudio Workspace" loading="lazy" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;transition:transform 0.6s ease;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#1E1C1A;">
         <div class="reveal" style="background:#0A0908;padding:2rem;">
           <span class="font-display" style="font-size:3rem;font-weight:700;color:#F0E8DC;">50<span style="color:#C9F03C;">+</span></span>
           <p style="color:#5C5651;font-size:0.8rem;margin-top:0.5rem;">Projekte umgesetzt</p>
@@ -555,6 +550,7 @@
         <div class="reveal" style="background:#0A0908;padding:2rem;transition-delay:0.21s;">
           <span class="font-display" style="font-size:3rem;font-weight:700;color:#F0E8DC;">100<span style="color:#C9F03C;">%</span></span>
           <p style="color:#5C5651;font-size:0.8rem;margin-top:0.5rem;">Maßgeschneidert</p>
+        </div>
         </div>
       </div>
 
