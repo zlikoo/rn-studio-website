@@ -204,6 +204,9 @@
       border-radius: 16px;
       border: 1px solid #1E1C1A;
       display: block;
+      width: 100%;
+      min-height: 700px;
+      height: clamp(700px, 80svh, 900px);
     }
 
     a:focus-visible, button:focus-visible {
@@ -428,8 +431,6 @@
           // Direct iframe embed — reliable, no JS library needed
           embed.innerHTML = `<iframe
             src="${url}?hide_gdpr_banner=1&background_color=0A0908&text_color=F0E8DC&primary_color=C9F03C"
-            width="100%"
-            height="700"
             frameborder="0"
             scrolling="no"
             title="Calendly Terminbuchung"
@@ -477,6 +478,5 @@
     })();
   </script>
 
-</body>
 </body>
 </html>

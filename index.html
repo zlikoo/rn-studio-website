@@ -265,6 +265,15 @@
       transition: width 0.3s ease;
     }
     .hover-ul:hover::after { width: 100%; }
+    .hover-lime { color: #8C8680; transition: color .2s ease; }
+    .hover-lime:hover { color: #C9F03C; }
+    .hover-link-white { color: #F0E8DC; transition: color .2s ease; }
+    .hover-link-white:hover { color: #C9F03C; }
+    .hero-cta-link { color:#8C8680;text-decoration:none;border:1px solid rgba(255,255,255,0.1);border-radius:9999px;padding:0.75rem 1.5rem;font-size:0.875rem;font-weight:500;transition:border-color .2s ease,color .2s ease;cursor:pointer;backdrop-filter:blur(8px);background:rgba(255,255,255,0.03); }
+    .hero-cta-link:hover { border-color:rgba(201,240,60,0.4); color:#F0E8DC; }
+    .hover-img-zoom { overflow:hidden; }
+    .hover-img-zoom img { transition: transform .6s ease; }
+    .hover-img-zoom:hover img { transform: scale(1.03); }
 
     /* ── Form fields ── */
     .field {
@@ -426,7 +435,7 @@
           Für kleine Unternehmen mit großen Visionen.
         </p>
         <div class="flex items-center flex-wrap" style="gap:0.75rem;">
-          <a href="#leistungen" style="color:#8C8680;text-decoration:none;border:1px solid rgba(255,255,255,0.1);border-radius:9999px;padding:0.75rem 1.5rem;font-size:0.875rem;font-weight:500;transition:border-color .2s ease,color .2s ease;cursor:pointer;backdrop-filter:blur(8px);background:rgba(255,255,255,0.03);" onmouseover="this.style.borderColor='rgba(201,240,60,0.4)';this.style.color='#F0E8DC'" onmouseout="this.style.borderColor='rgba(255,255,255,0.1)';this.style.color='#8C8680'">
+          <a href="#leistungen" class="hero-cta-link">
             Leistungen
           </a>
           <a href="#kontakt" class="btn-lime" style="padding:0.75rem 1.75rem;font-size:0.875rem;">
@@ -744,8 +753,8 @@
 
       <!-- Right: Photo + Stats -->
       <div>
-        <div class="reveal" style="overflow:hidden;margin-bottom:1px;">
-          <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=880&q=80&fit=crop" alt="R&N Studio – Kreativstudio Workspace" loading="lazy" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;transition:transform 0.6s ease;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+        <div class="reveal hover-img-zoom" style="margin-bottom:1px;">
+          <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=880&q=80&fit=crop" alt="R&N Studio – Kreativstudio Workspace" loading="lazy" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;">
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#1E1C1A;">
         <div class="reveal" style="background:#0A0908;padding:2rem;">
@@ -854,11 +863,11 @@
         <div class="reveal" style="display:flex;flex-direction:column;gap:1.5rem;transition-delay:0.24s;">
           <div>
             <p style="color:#5C5651;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.18em;margin-bottom:0.35rem;">E-Mail</p>
-            <a href="mailto:hello@rn-studio.de" class="hover-ul" style="color:#F0E8DC;text-decoration:none;transition:color 0.2s ease;font-size:0.975rem;" onmouseover="this.style.color='#C9F03C'" onmouseout="this.style.color='#F0E8DC'">hello@rn-studio.de</a>
+            <a href="mailto:hello@rn-studio.de" class="hover-ul hover-link-white" style="text-decoration:none;font-size:0.975rem;">hello@rn-studio.de</a>
           </div>
           <div>
             <p style="color:#5C5651;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.18em;margin-bottom:0.35rem;">Instagram</p>
-            <a href="https://www.instagram.com/rnstudio.de/" target="_blank" rel="noopener noreferrer" class="hover-ul" style="color:#F0E8DC;text-decoration:none;transition:color 0.2s ease;font-size:0.975rem;" onmouseover="this.style.color='#C9F03C'" onmouseout="this.style.color='#F0E8DC'">@rnstudio.de</a>
+            <a href="https://www.instagram.com/rnstudio.de/" target="_blank" rel="noopener noreferrer" class="hover-ul hover-link-white" style="text-decoration:none;font-size:0.975rem;">@rnstudio.de</a>
           </div>
           <div>
             <p style="color:#5C5651;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.18em;margin-bottom:0.35rem;">Standort</p>
@@ -915,8 +924,8 @@
       <span class="font-display" style="color:#F0E8DC;font-weight:600;font-size:1.2rem;">R<span style="color:#C9F03C;">&amp;</span>N Studio</span>
       <p style="color:#3A3834;font-size:0.8rem;">© 2025 R&amp;N Studio GbR. Alle Rechte vorbehalten.</p>
       <nav aria-label="Footer-Navigation" style="display:flex;gap:1.5rem;">
-        <a href="/impressum.html" class="hover-ul" style="color:#5C5651;font-size:0.8rem;text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='#F0E8DC'" onmouseout="this.style.color='#5C5651'">Impressum</a>
-        <a href="#" class="hover-ul" style="color:#5C5651;font-size:0.8rem;text-decoration:none;transition:color 0.2s ease;" onmouseover="this.style.color='#F0E8DC'" onmouseout="this.style.color='#5C5651'">Datenschutz</a>
+        <a href="/impressum.html" class="hover-ul hover-lime" style="font-size:0.8rem;text-decoration:none;">Impressum</a>
+        <a href="#" class="hover-ul hover-lime" style="font-size:0.8rem;text-decoration:none;">Datenschutz</a>
       </nav>
     </div>
   </footer>
